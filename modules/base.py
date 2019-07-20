@@ -1,10 +1,10 @@
-from core.helper import Helper
+from core.logger import Logger
 from tabulate import tabulate
 
 
 class BaseModule:
     def __init__(self):
-        self.log = Helper()
+        self.logger = Logger()
         self.name = "BaseModule"
         self.description = "Base module, do nothing"
         self.options = []
