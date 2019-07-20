@@ -6,8 +6,14 @@ from importlib import import_module
 from modules import base
 from prompt_toolkit.shortcuts import PromptSession
 from prompt_toolkit.styles import Style
-from tabulate import tabulate
-from core.helper import Helper
+from core.logger import Logger
+from core.command.run import run_module
+from core.command.show import show
+from core.command.set_options import set_options
+from core.command.use import use
+from core.command.back import back
+from core.command.quit import hbf_exit
+from core.command.help import hbf_help
 
 
 class HydraFramework:
@@ -15,11 +21,11 @@ class HydraFramework:
     Framework core engine
     """
     def __init__(self):
-        self.helper = Helper()
+        self.logger = Logger()
         self.app_path = sys.path[0]
         self._home = ''
-        self.module_command = ["set", "run", "unset"]
-        self.generic_command = ["use", "help", "exit", "back", "show"]
+        self.current_module = base.BaseModule()
+        self.modules = self._list_modules()
         self.prompt_style = Style.from_dict({
             # User input (default text).
             '': '#ffffff',
@@ -34,59 +40,15 @@ class HydraFramework:
             ('class:path', ''),
             ('class:pound', '> '),
         ]
-        self.current_module = base.BaseModule()
-        self.modules = self.__list_modules()
         self.command = [
-            {"name": "show", "descr": "modules|options: Displays modules list, or module options", "run": self.show},
-            {"name": "help", "descr": "Help menu", "run": self.help},
-            {"name": "exit", "descr": "Exit the console", "run": self._exit},
-            {"name": "use", "descr": "Load a module by name", "run": self.use},
-            {"name": "run", "descr": "Run the selected module", "run": self.run_module},
-            {"name": "back", "descr": "Move back from the current context", "run": self.back},
-            {"name": "set", "descr": "Sets a context-specific variable to a value", "run": self.set}
+            {"name": "show", "descr": "modules|options: Displays modules list, or module options", "run": show},
+            {"name": "help", "descr": "Help menu", "run": hbf_help},
+            {"name": "exit", "descr": "Exit the console", "run": hbf_exit},
+            {"name": "use", "descr": "Load a module by name", "run": use},
+            {"name": "run", "descr": "Run the selected module", "run": run_module},
+            {"name": "back", "descr": "Move back from the current context", "run": back},
+            {"name": "set", "descr": "Sets a context-specific variable to a value", "run": set_options}
         ]
-
-    def _print_tabulate(self, data, headers):
-        print()
-        print(tabulate(data, headers=headers))
-        print()
-
-    def set(self, command):
-        """
-        Sets a context-specific variable to a value
-        TODO: check if another method is possible instead of using an index variable
-        """
-        array_option = command.split(" ")
-        if len(array_option) < 3:
-            self.helper.print_error("Bad usage")
-            self.helper.print_info("Usage: set option_name value")
-        else:
-            for option in self.current_module.options:
-                if option["Name"] == array_option[1]:
-                    option["Value"] = array_option[2]
-                    break
-            else:
-                self.helper.print_error("option does not exist")
-
-    def back(self):
-        """
-        back function: Move back from the current context
-        """
-        self.current_module = base.BaseModule()
-        self.update_prompt("")
-
-    def run_module(self):
-        """
-        Check all arguments and run the selected module
-        """
-        ret, err = self.current_module.check_args()
-        if not ret:
-            self.log.print_error(err)
-        self.current_module.check_args()
-        try:
-            self.current_module.run()
-        except:
-            self.helper.print_error("Error running module")
 
     def update_prompt(self, module_name):
         """
@@ -106,66 +68,7 @@ class HydraFramework:
                 ('class:pound', '> '),
             ]
 
-    def use(self, command):
-        """
-        Method used to select a specific module
-        :param command: User input
-        """
-        if len(command.split(" ")) < 2:
-            print("usage")
-        else:
-            for module in self.modules:
-                if module["path"] == command.split(" ")[1]:
-                    self.current_module = module["class"]()
-                    self.update_prompt(module["path"])
-                    break
-            else:
-                print("module not found")
-
-    def _exit(self):
-        exit(0)
-
-    def help(self):
-        """
-        Print framework help on the console
-        """
-        print()
-        print("Core Commands")
-        print("=============")
-        formatted_commands = []
-        for cmd in self.command:
-            formatted_commands.append(
-                {
-                    "Command": cmd["name"],
-                    "Description": cmd["descr"]
-                }
-            )
-        self._print_tabulate(formatted_commands, headers={"name": "Name", "descr": "Description"})
-
-    def show(self, command):
-        """
-        Displays modules list, or module options. Depending on arguments
-        :param command:
-        """
-        # TODO: print by category separately
-        try:
-            if command.split(" ")[1] == "modules":
-                formatted_modules = []
-                print("================")
-                print("| Modules list |")
-                print("================")
-                for module in self.modules:
-                    formatted_modules.append({"Path": module["path"],
-                                              "Description": module["class"]().get_description()})
-                self._print_tabulate(formatted_modules, headers={"Path": "Path", "Description": "Description"})
-            else:
-                if self.current_module.__name__ != "BaseModule":
-                    if command.split(" ")[1] == "options":
-                        self.current_module.show_options()
-        except IndexError:
-            print("Usage: show modules|options")
-
-    def __list_modules(self):
+    def _list_modules(self):
         """
         Generate modules path and attributes list
         :return:
@@ -191,11 +94,12 @@ class HydraFramework:
         User console command handler
         :param command: User input
         """
-        # TODO: check command that need arguments, else run without
         for cmd in self.command:
             if command.split(" ")[0] == cmd["name"]:
-                if len(inspect.getfullargspec(cmd["run"])[0]) > 1:
-                    cmd["run"](command)
+                if len(inspect.getfullargspec(cmd["run"])[0]) == 2:
+                    cmd["run"](self, command)
+                elif len(inspect.getfullargspec(cmd["run"])[0]) == 1:
+                    cmd["run"](self)
                 else:
                     cmd["run"]()
                 break
