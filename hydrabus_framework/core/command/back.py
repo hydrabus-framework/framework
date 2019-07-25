@@ -1,4 +1,4 @@
-from modules.base import BaseModule
+from hydrabus_framework.modules.base import BaseModule
 
 
 def back(hbf_instance):

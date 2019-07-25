@@ -1,4 +1,4 @@
-from core.logger import Logger
+from hydrabus_framework.core.logger import Logger
 from tabulate import tabulate
 
 

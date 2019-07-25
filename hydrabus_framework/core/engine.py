@@ -1,18 +1,19 @@
 import inspect
 import sys
 import os
-from modules.base import BaseModule
+import hydrabus_framework.modules as modules_path
+from hydrabus_framework.modules.base import BaseModule
+from hydrabus_framework.core.logger import Logger
+from hydrabus_framework.core.command.run import run_module
+from hydrabus_framework.core.command.show import show
+from hydrabus_framework.core.command.set_options import set_options
+from hydrabus_framework.core.command.use import use
+from hydrabus_framework.core.command.back import back
+from hydrabus_framework.core.command.quit import hbf_exit
+from hydrabus_framework.core.command.help import hbf_help
 from importlib import import_module
 from prompt_toolkit.shortcuts import PromptSession
 from prompt_toolkit.styles import Style
-from core.logger import Logger
-from core.command.run import run_module
-from core.command.show import show
-from core.command.set_options import set_options
-from core.command.use import use
-from core.command.back import back
-from core.command.quit import hbf_exit
-from core.command.help import hbf_help
 
 
 class HydraFramework:
@@ -72,6 +73,7 @@ class HydraFramework:
         :return:
         """
         modules = []
+
         current_directory = os.path.dirname(self.app_path + "/modules/")
         submodule_dirs = [d for d in os.listdir(current_directory) if
                           os.path.isdir(os.path.join(current_directory, d)) and "__" not in d]
