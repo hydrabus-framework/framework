@@ -1,5 +1,6 @@
 from tabulate import tabulate
 
+
 class Logger:
     def __init__(self):
         self.HEADER = '\033[95m'
@@ -20,14 +21,16 @@ class Logger:
         """
         if category == "error":
             print("{}[✘]{} {}".format(self.FAIL, self.ENDC, text))
-        if category == "success":
+        elif category == "success":
             print("{}[✔]{} {}".format(self.OKGREEN, self.ENDC, text))
-        if category == "info":
+        elif category == "info":
             print("[*] {}".format(text))
-        if category == "result":
+        elif category == "result":
             print("{}[✔]{} {}".format(self.OKGREEN, text, self.ENDC))
-        if category == "user":
+        elif category == "user":
             print("{}[*]{} {}".format(self.OKBLUE, text, self.ENDC))
+        elif category == "header":
+            print("{}{}{}".format(self.BOLD, text, self.ENDC))
 
     def print_tabulate(self, data, headers):
         """
