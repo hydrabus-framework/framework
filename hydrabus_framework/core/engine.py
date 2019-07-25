@@ -1,8 +1,7 @@
 import inspect
-import sys
 import os
-import hydrabus_framework.modules as modules_path
-from hydrabus_framework.modules.base import BaseModule
+import pkgutil
+import sys
 from hydrabus_framework.core.logger import Logger
 from hydrabus_framework.core.command.run import run_module
 from hydrabus_framework.core.command.show import show
@@ -11,6 +10,7 @@ from hydrabus_framework.core.command.use import use
 from hydrabus_framework.core.command.back import back
 from hydrabus_framework.core.command.quit import hbf_exit
 from hydrabus_framework.core.command.help import hbf_help
+from hydrabus_framework.modules.base import BaseModule
 from importlib import import_module
 from prompt_toolkit.shortcuts import PromptSession
 from prompt_toolkit.styles import Style
@@ -70,23 +70,24 @@ class HydraFramework:
     def _list_modules(self):
         """
         Generate modules path and attributes list
-        :return:
+        :return: List of available modules
         """
         modules = []
+        module_name = "hbfmodules"
 
-        current_directory = os.path.dirname(self.app_path + "/modules/")
-        submodule_dirs = [d for d in os.listdir(current_directory) if
-                          os.path.isdir(os.path.join(current_directory, d)) and "__" not in d]
-
-        for module_dir in submodule_dirs:
-            files = [f for f in os.listdir(os.path.join(current_directory, module_dir)) if
-                     os.path.isfile(os.path.join(current_directory, module_dir, f))]
-            for file in files:
-                module = import_module("modules.{}.{}".format(module_dir, file.split('.')[0]))
-                for x in dir(module):
-                    obj = getattr(module, x)
-                    if inspect.isclass(obj) and issubclass(obj, BaseModule) and obj is not BaseModule:
-                        modules.append({"path": os.path.join(module_dir, file.split('.')[0]), "class": obj})
+        try:
+            package = import_module(module_name)
+        except ImportError:
+            self.logger.print('Package {} not found...'.format(module_name), "error")
+            sys.exit(1)
+        for loader, module, is_pkg in pkgutil.walk_packages(package.__path__, prefix=package.__name__ + '.'):
+            print(module)
+            imported_module = import_module(module)
+            for x in dir(imported_module):
+                obj = getattr(imported_module, x)
+                if inspect.isclass(obj) and issubclass(obj, BaseModule) and obj is not BaseModule:
+                    modules.append({"path": module, "class": obj})
+                    print("{} added".format(module))
         return modules
 
     def handler(self, command):
