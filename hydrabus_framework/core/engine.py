@@ -81,13 +81,12 @@ class HydraFramework:
             self.logger.print('Package {} not found...'.format(module_name), "error")
             sys.exit(1)
         for loader, module, is_pkg in pkgutil.walk_packages(package.__path__, prefix=package.__name__ + '.'):
-            print(module)
             imported_module = import_module(module)
             for x in dir(imported_module):
                 obj = getattr(imported_module, x)
                 if inspect.isclass(obj) and issubclass(obj, BaseModule) and obj is not BaseModule:
-                    modules.append({"path": module, "class": obj})
-                    print("{} added".format(module))
+                    module_path = module.replace('hbfmodules.', '').replace('.', '/')
+                    modules.append({"path": module_path, "class": obj})
         return modules
 
     def handler(self, command):
