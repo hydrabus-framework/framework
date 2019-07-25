@@ -3,7 +3,6 @@ import sys
 import os
 from modules.base import BaseModule
 from importlib import import_module
-from modules import base
 from prompt_toolkit.shortcuts import PromptSession
 from prompt_toolkit.styles import Style
 from core.logger import Logger
@@ -23,8 +22,7 @@ class HydraFramework:
     def __init__(self):
         self.logger = Logger()
         self.app_path = sys.path[0]
-        self._home = ''
-        self.current_module = base.BaseModule()
+        self.current_module = BaseModule()
         self.modules = self._list_modules()
         self.prompt_style = Style.from_dict({
             # User input (default text).
@@ -109,8 +107,10 @@ class HydraFramework:
     def run(self):
         """
         Main loop, waiting for user input
+        :return:
         """
         # TODO: close everything before exit
+        # TODO: Improve Ctrl+c handle
         session = PromptSession()
         try:
             while True:

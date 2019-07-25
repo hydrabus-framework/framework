@@ -19,13 +19,13 @@ class Logger:
         :return:
         """
         if category == "error":
-            print("{}[!]{} {}".format(self.FAIL, self.ENDC, text))
+            print("{}[✘]{} {}".format(self.FAIL, self.ENDC, text))
         if category == "success":
-            print("{}[+]{} {}".format(self.OKGREEN, self.ENDC, text))
+            print("{}[✔]{} {}".format(self.OKGREEN, self.ENDC, text))
         if category == "info":
             print("[*] {}".format(text))
         if category == "result":
-            print("{}[+++]{} {}".format(self.OKGREEN, text, self.ENDC))
+            print("{}[✔]{} {}".format(self.OKGREEN, text, self.ENDC))
         if category == "user":
             print("{}[*]{} {}".format(self.OKBLUE, text, self.ENDC))
 
