@@ -2,6 +2,9 @@ import inspect
 import os
 import pkgutil
 import sys
+from importlib import import_module
+from prompt_toolkit.shortcuts import PromptSession
+from prompt_toolkit.styles import Style
 from hydrabus_framework.core.logger import Logger
 from hydrabus_framework.core.command.run import run_module
 from hydrabus_framework.core.command.show import show
@@ -11,9 +14,6 @@ from hydrabus_framework.core.command.back import back
 from hydrabus_framework.core.command.quit import hbf_exit
 from hydrabus_framework.core.command.help import hbf_help
 from hydrabus_framework.modules.base import BaseModule, ABaseModule
-from importlib import import_module
-from prompt_toolkit.shortcuts import PromptSession
-from prompt_toolkit.styles import Style
 
 
 class HydraFramework:
