@@ -18,6 +18,9 @@ from hydrabus_framework.core.command.help import hbf_help
 from hydrabus_framework.modules.base import ABaseModule
 
 
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 class HydraFramework:
     """
     Framework core engine

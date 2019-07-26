@@ -1,6 +1,9 @@
 from hydrabus_framework.modules.base import ABaseModule
 
 
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 def set_options(hbf_instance, command):
     """
     Sets a context-specific variable to a value

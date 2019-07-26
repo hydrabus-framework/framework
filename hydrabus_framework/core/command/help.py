@@ -1,9 +1,11 @@
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 def hbf_help(hbf_instance):
     """
     Print framework help on the console
     """
-    print()
-    print("Core Commands")
+    print("\nCore Commands")
     print("=============")
     formatted_commands = []
     for cmd in hbf_instance.command:

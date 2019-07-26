@@ -1,5 +1,9 @@
 import traceback
+
 from hydrabus_framework.modules.base import ABaseModule
+
+
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 
 def run_module(hbf_instance):

@@ -1,3 +1,6 @@
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 def use(hbf_instance, command):
     """
     Method used to select a specific module

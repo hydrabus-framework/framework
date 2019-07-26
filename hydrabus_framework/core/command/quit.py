@@ -1,3 +1,6 @@
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 def hbf_exit():
     """
     Quit Hydrabus framework

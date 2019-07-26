@@ -3,6 +3,9 @@ import serial
 from hydrabus_framework.core.logger import Logger
 
 
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 def hb_reset(serial_instance):
     """
     Reset hydrabus to return in console mode

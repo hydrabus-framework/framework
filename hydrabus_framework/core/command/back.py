@@ -1,3 +1,6 @@
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 def back(hbf_instance):
     """
     Move back from the current context

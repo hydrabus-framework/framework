@@ -3,6 +3,9 @@ from hydrabus_framework.core.logger import Logger
 from tabulate import tabulate
 
 
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 class ABaseModule(ABC):
     def __init__(self):
         self.logger = Logger()

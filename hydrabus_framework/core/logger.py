@@ -1,6 +1,9 @@
 from tabulate import tabulate
 
 
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 class Logger:
     def __init__(self):
         self.HEADER = '\033[95m'

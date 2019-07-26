@@ -1,6 +1,9 @@
 from hydrabus_framework.modules.base import ABaseModule
 
 
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 def show(hbf_instance, command):
     """
     Displays modules list, or module options. Depending on arguments

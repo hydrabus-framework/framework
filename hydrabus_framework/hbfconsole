@@ -4,6 +4,9 @@ import configparser
 from hydrabus_framework.core.engine import HydraFramework
 
 
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 def welcome():
     print("""\033[92m
       _    ___     _______  _____            ____  _    _  _____           

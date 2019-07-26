@@ -2,6 +2,9 @@ from hydrabus_framework.core.logger import Logger
 from hydrabus_framework.utils.generic import *
 
 
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 def hb_set_baudrate(serial_instance, baudrate):
     """
     Set the desired baudrate value to communicate with the target device.
