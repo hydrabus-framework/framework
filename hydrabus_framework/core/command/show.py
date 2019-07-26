@@ -1,4 +1,4 @@
-from hydrabus_framework.core.logger import Logger
+from hydrabus_framework.modules.base import ABaseModule
 
 
 def show(hbf_instance, command):
@@ -9,7 +9,6 @@ def show(hbf_instance, command):
     :return:
     """
     # TODO: print by category separately
-    logger = Logger()
     try:
         if command.split(" ")[1] == "modules":
             formatted_modules = []
@@ -19,9 +18,10 @@ def show(hbf_instance, command):
             for module in hbf_instance.modules:
                 formatted_modules.append({"Path": module["path"],
                                           "Description": module["class"]().get_description()})
-            logger.print_tabulate(formatted_modules, headers={"Path": "Path", "Description": "Description"})
+            hbf_instance.logger.print_tabulate(formatted_modules,
+                                               headers={"Path": "Path", "Description": "Description"})
         else:
-            if hbf_instance.current_module.__name__ != "BaseModule":
+            if isinstance(hbf_instance.current_module, ABaseModule):
                 if command.split(" ")[1] == "options":
                     hbf_instance.current_module.show_options()
     except IndexError:

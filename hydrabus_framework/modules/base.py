@@ -44,13 +44,13 @@ class ABaseModule(ABC):
     def show_options(self):
         """
         Print available options for the module to user console
-        :return:
+        :return: Nothing
         """
         formatted_options = []
         if len(self.options) > 0:
             print(self.get_description())
             for option in self.options:
-                if option["Default"] != "":
+                if option["Default"] != "" and option["Value"] == "":
                     formatted_options.append(
                         {
                             'Name': option["Name"],
@@ -68,10 +68,8 @@ class ABaseModule(ABC):
                             'Description': option["Description"]
                         }
                     )
-            print()
-            print(tabulate(formatted_options, headers={"Name": "Name", "Description": "Description",
-                                                       "Value": "Value", "Required": "Required"}))
-            print()
+            print("\n{}\n".format(tabulate(formatted_options, headers={"Name": "Name", "Description": "Description",
+                                                                       "Value": "Value", "Required": "Required"})))
 
     def get_description(self):
         return self.description
@@ -80,7 +78,3 @@ class ABaseModule(ABC):
     def run(self):
         pass
 
-
-class BaseModule(ABaseModule):
-    def run(self):
-        return 0

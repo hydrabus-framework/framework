@@ -13,7 +13,7 @@ from hydrabus_framework.core.command.use import use
 from hydrabus_framework.core.command.back import back
 from hydrabus_framework.core.command.quit import hbf_exit
 from hydrabus_framework.core.command.help import hbf_help
-from hydrabus_framework.modules.base import BaseModule, ABaseModule
+from hydrabus_framework.modules.base import ABaseModule
 
 
 class HydraFramework:
@@ -23,7 +23,7 @@ class HydraFramework:
     def __init__(self):
         self.logger = Logger()
         self.app_path = sys.path[0]
-        self.current_module = BaseModule()
+        self.current_module = None
         self.modules = self._list_modules()
         self.prompt_style = Style.from_dict({
             # User input (default text).
