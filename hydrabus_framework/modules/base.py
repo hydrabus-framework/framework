@@ -1,8 +1,9 @@
+from abc import ABC, abstractmethod
 from hydrabus_framework.core.logger import Logger
 from tabulate import tabulate
 
 
-class BaseModule:
+class ABaseModule(ABC):
     def __init__(self):
         self.logger = Logger()
         self.name = "BaseModule"
@@ -40,9 +41,6 @@ class BaseModule:
                 return True, option["Value"]
         return False, ""
 
-    def check_args_validity(self):
-        pass
-
     def show_options(self):
         """
         Print available options for the module to user console
@@ -78,7 +76,11 @@ class BaseModule:
     def get_description(self):
         return self.description
 
+    @abstractmethod
     def run(self):
         pass
 
 
+class BaseModule(ABaseModule):
+    def run(self):
+        return 0

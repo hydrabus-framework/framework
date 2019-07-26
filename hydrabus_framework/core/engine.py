@@ -10,7 +10,7 @@ from hydrabus_framework.core.command.use import use
 from hydrabus_framework.core.command.back import back
 from hydrabus_framework.core.command.quit import hbf_exit
 from hydrabus_framework.core.command.help import hbf_help
-from hydrabus_framework.modules.base import BaseModule
+from hydrabus_framework.modules.base import BaseModule, ABaseModule
 from importlib import import_module
 from prompt_toolkit.shortcuts import PromptSession
 from prompt_toolkit.styles import Style
@@ -84,7 +84,7 @@ class HydraFramework:
             imported_module = import_module(module)
             for x in dir(imported_module):
                 obj = getattr(imported_module, x)
-                if inspect.isclass(obj) and issubclass(obj, BaseModule) and obj is not BaseModule:
+                if inspect.isclass(obj) and issubclass(obj, ABaseModule) and obj is not ABaseModule:
                     module_path = module.replace('hbfmodules.', '').replace('.', '/')
                     modules.append({"path": module_path, "class": obj})
         return modules
