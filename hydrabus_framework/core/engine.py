@@ -2,9 +2,11 @@ import inspect
 import os
 import pkgutil
 import sys
+
 from importlib import import_module
 from prompt_toolkit.shortcuts import PromptSession
 from prompt_toolkit.styles import Style
+
 from hydrabus_framework.core.logger import Logger
 from hydrabus_framework.core.command.run import run_module
 from hydrabus_framework.core.command.show import show
@@ -77,17 +79,16 @@ class HydraFramework:
 
         try:
             package = import_module(module_name)
+            for loader, module, is_pkg in pkgutil.walk_packages(package.__path__, prefix=package.__name__ + '.'):
+                imported_module = import_module(module)
+                for x in dir(imported_module):
+                    obj = getattr(imported_module, x)
+                    if inspect.isclass(obj) and issubclass(obj, ABaseModule) and obj is not ABaseModule:
+                        module_path = module.replace('hbfmodules.', '').replace('.', '/')
+                        modules.append({"path": module_path, "class": obj})
+            return modules
         except ImportError:
-            self.logger.print('Package {} not found...'.format(module_name), "error")
-            sys.exit(1)
-        for loader, module, is_pkg in pkgutil.walk_packages(package.__path__, prefix=package.__name__ + '.'):
-            imported_module = import_module(module)
-            for x in dir(imported_module):
-                obj = getattr(imported_module, x)
-                if inspect.isclass(obj) and issubclass(obj, ABaseModule) and obj is not ABaseModule:
-                    module_path = module.replace('hbfmodules.', '').replace('.', '/')
-                    modules.append({"path": module_path, "class": obj})
-        return modules
+            self.logger.print('Error dynamically import package "{}"...'.format(module_name), "error")
 
     def handler(self, command):
         """
