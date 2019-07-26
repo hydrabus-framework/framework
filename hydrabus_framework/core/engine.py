@@ -44,7 +44,7 @@ class HydraFramework:
             ('class:path', ''),
             ('class:pound', '> '),
         ]
-        self.command = [
+        self.commands = [
             {"name": "show", "descr": "modules|options: Displays modules list, or module options", "run": show},
             {"name": "help", "descr": "Help menu", "run": hbf_help},
             {"name": "exit", "descr": "Exit the console", "run": hbf_exit},
@@ -98,7 +98,7 @@ class HydraFramework:
         User console command handler
         :param command: User input
         """
-        for cmd in self.command:
+        for cmd in self.commands:
             if command.split(" ")[0] == cmd["name"]:
                 if len(inspect.getfullargspec(cmd["run"])[0]) == 2:
                     cmd["run"](self, command)
