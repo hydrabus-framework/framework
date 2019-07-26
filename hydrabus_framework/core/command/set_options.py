@@ -11,7 +11,7 @@ def set_options(hbf_instance, command):
         hbf_instance.logger.print("Usage: set option_name value", "info")
     else:
         for option in hbf_instance.current_module.options:
-            if option["Name"] == array_option[1]:
+            if option["Name"].upper() == array_option[1].upper():
                 option["Value"] = array_option[2]
                 break
         else:
