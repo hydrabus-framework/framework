@@ -1,6 +1,6 @@
 import time
 import serial
-from hydrabus_framework.core.logger import Logger
+from hydrabus_framework.utils.logger import Logger
 
 
 __author__ = "Jordan Ovrè <ghecko78@gmail.com>"

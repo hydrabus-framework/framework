@@ -5,6 +5,9 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 
 class Logger:
+    """
+    The aim of this class is to manage core framework and module printing
+    """
     def __init__(self):
         self.HEADER = '\033[95m'
         self.OKBLUE = '\033[94m'
@@ -38,21 +41,51 @@ class Logger:
             print(text)
 
     def _print_error(self, text):
+        """
+        Beautify error message
+        :param text: String, message to be printed
+        :return: Nothing
+        """
         print("{}[✘]{} {}".format(self.FAIL, self.ENDC, text))
 
     def _print_success(self, text):
+        """
+        Beautify success message
+        :param text: String, message to be printed
+        :return: Nothing
+        """
         print("{}[✔]{} {}".format(self.OKGREEN, self.ENDC, text))
 
     def _print_info(self, text):
+        """
+        Beautify info message
+        :param text: String, message to be printed
+        :return: Nothing
+        """
         print("[*] {}".format(text))
 
     def _print_result(self, text):
+        """
+        Beautify result message
+        :param text: String, message to be printed
+        :return: Nothing
+        """
         print("{}[✔]{} {}".format(self.OKGREEN, text, self.ENDC))
 
     def _print_user_interact(self, text):
+        """
+        Beautify needed user's interaction message
+        :param text: String, message to be printed
+        :return: Nothing
+        """
         print("{}[*]{} {}".format(self.OKBLUE, text, self.ENDC))
 
     def _print_header(self, text):
+        """
+        Beautify header message
+        :param text: String, message to be printed
+        :return: Nothing
+        """
         print("{}{}{}".format(self.BOLD, text, self.ENDC))
 
     @staticmethod
@@ -61,6 +94,6 @@ class Logger:
         Print data in a beautiful tab
         :param data: Array
         :param headers: The headers of array passed
-        :return:
+        :return: Nothing
         """
         print("\n{}\n".format(tabulate(data, headers=headers)))
