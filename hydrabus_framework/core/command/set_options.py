@@ -7,9 +7,9 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 def set_options(hbf_instance, command):
     """
     Sets a context-specific variable to a value
-    :param command: command: string, user seized entry
+    :param command: string, user seized entry
     :param hbf_instance: Hydrabus framework instance (self)
-    :return:
+    :return: Nothing
     """
     array_option = command.split(" ")
     if len(array_option) < 3:

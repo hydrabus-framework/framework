@@ -9,8 +9,8 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 def run_module(hbf_instance):
     """
     Check all arguments and run the selected module
-    :param hbf_instance: hydrabus serial instance
-    :return:
+    :param hbf_instance: Hydrabus framework instance (self)
+    :return: Nothing
     """
     if isinstance(hbf_instance.current_module, ABaseModule):
         ret, err = hbf_instance.current_module.check_args()

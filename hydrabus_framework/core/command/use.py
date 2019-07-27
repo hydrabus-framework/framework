@@ -6,6 +6,7 @@ def use(hbf_instance, command):
     Method used to select a specific module
     :param command: User input
     :param hbf_instance: Hydrabus framework instance (self)
+    :return: Nothing
     """
     if len(command.split(" ")) < 2:
         print("usage")

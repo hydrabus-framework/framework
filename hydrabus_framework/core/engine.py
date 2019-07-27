@@ -1,5 +1,4 @@
 import inspect
-import os
 import pkgutil
 import sys
 
@@ -7,13 +6,7 @@ from importlib import import_module
 from prompt_toolkit.shortcuts import PromptSession
 from prompt_toolkit.styles import Style
 
-from hydrabus_framework.core.command.run import run_module
-from hydrabus_framework.core.command.show import show
-from hydrabus_framework.core.command.set_options import set_options
-from hydrabus_framework.core.command.use import use
-from hydrabus_framework.core.command.back import back
-from hydrabus_framework.core.command.quit import hbf_exit
-from hydrabus_framework.core.command.help import hbf_help
+from hydrabus_framework.core.dispatcher import Dispatcher
 from hydrabus_framework.modules.base import ABaseModule
 from hydrabus_framework.utils.logger import Logger
 
@@ -30,6 +23,7 @@ class HydraFramework:
         self.app_path = sys.path[0]
         self.current_module = None
         self.modules = self._list_modules()
+        self.dispatcher = Dispatcher()
         self.prompt_style = Style.from_dict({
             # User input (default text).
             '': '#ffffff',
@@ -43,15 +37,6 @@ class HydraFramework:
             ('class:username', '[hbf] '),
             ('class:path', ''),
             ('class:pound', '> '),
-        ]
-        self.commands = [
-            {"name": "show", "descr": "modules|options: Displays modules list, or module options", "run": show},
-            {"name": "help", "descr": "Help menu", "run": hbf_help},
-            {"name": "exit", "descr": "Exit the console", "run": hbf_exit},
-            {"name": "use", "descr": "Load a module by name", "run": use},
-            {"name": "run", "descr": "Run the selected module", "run": run_module},
-            {"name": "back", "descr": "Move back from the current context", "run": back},
-            {"name": "set", "descr": "Sets a context-specific variable to a value", "run": set_options}
         ]
 
     def update_prompt(self, module_name):
@@ -93,23 +78,6 @@ class HydraFramework:
         except ImportError:
             self.logger.print('Error dynamically import package "{}"...'.format(module_name), "error")
 
-    def handler(self, command):
-        """
-        User console command handler
-        :param command: User input
-        """
-        for cmd in self.commands:
-            if command.split(" ")[0] == cmd["name"]:
-                if len(inspect.getfullargspec(cmd["run"])[0]) == 2:
-                    cmd["run"](self, command)
-                elif len(inspect.getfullargspec(cmd["run"])[0]) == 1:
-                    cmd["run"](self)
-                else:
-                    cmd["run"]()
-                break
-        else:
-            os.system(command)
-
     def run(self):
         """
         Main loop, waiting for user input
@@ -121,6 +89,6 @@ class HydraFramework:
         try:
             while True:
                 command = session.prompt(self.prompt, style=self.prompt_style)
-                self.handler(command)
+                self.dispatcher.handler(self, command)
         except KeyboardInterrupt:
             exit(1)
