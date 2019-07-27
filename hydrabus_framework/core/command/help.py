@@ -8,7 +8,7 @@ def hbf_help(hbf_instance):
     print("\nCore Commands")
     print("=============")
     formatted_commands = []
-    for cmd in hbf_instance.command:
+    for cmd in hbf_instance.commands:
         formatted_commands.append(
             {
                 "Command": cmd["name"],
