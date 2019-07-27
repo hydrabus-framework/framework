@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import configparser
 from hydrabus_framework.core.engine import HydraFramework
 
 
@@ -26,8 +25,6 @@ def welcome():
 
 if __name__ == "__main__":
     welcome()
-    config = configparser.ConfigParser()
-    config.read('config/config.cfg')
     instance = HydraFramework()
     instance.run()
 
