@@ -13,6 +13,8 @@ def use(hbf_instance, command):
     else:
         for module in hbf_instance.modules:
             if module["path"] == command.split(" ")[1]:
+                if hbf_instance.current_module is not None:
+                    hbf_instance.modules_history.append({"path": module["path"], "class": module["class"]()})
                 hbf_instance.current_module = module["class"]()
                 hbf_instance.update_prompt(module["path"])
                 break

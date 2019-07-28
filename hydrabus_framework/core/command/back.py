@@ -7,5 +7,11 @@ def back(hbf_instance):
     :param hbf_instance: Hydrabus framework instance (self)
     :return: Nothing
     """
-    hbf_instance.current_module = None
-    hbf_instance.update_prompt("")
+    if len(hbf_instance.modules_history) > 1:
+        previous_module = hbf_instance.modules_history.pop()
+        hbf_instance.update_prompt(previous_module["path"])
+        hbf_instance.current_module = previous_module["class"]
+    else:
+        if hbf_instance.current_module is not None:
+            hbf_instance.current_module = None
+            hbf_instance.update_prompt("")

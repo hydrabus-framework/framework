@@ -23,6 +23,7 @@ class HydraFramework:
         self.app_path = sys.path[0]
         self.current_module = None
         self.modules = self._list_modules()
+        self.modules_history = []
         self.dispatcher = Dispatcher()
         self.prompt_style = Style.from_dict({
             # User input (default text).
