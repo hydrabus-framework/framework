@@ -32,7 +32,7 @@ class HydraFramework:
             'base': '#3399ff',
             'pound': '#3399ff',
             'module': '#ff0000 bold',
-            'category': ''
+            'category': '#ffffff',
         })
         self.prompt = [
             ('class:base', '[hbf] '),
