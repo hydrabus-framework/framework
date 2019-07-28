@@ -1,5 +1,5 @@
 from hydrabus_framework.utils.logger import Logger
-from hydrabus_framework.utils.generic import *
+from hydrabus_framework.utils.hb_generic_cmd import *
 
 
 __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
