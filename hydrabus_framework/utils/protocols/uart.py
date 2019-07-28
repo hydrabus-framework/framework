@@ -18,12 +18,12 @@ def hb_set_baudrate(serial_instance, baudrate):
         # Change baudrate speed
         serial_instance.write(baudrate["hex"])
         if b'\x01' != serial_instance.read(1):
-            logger.print("Failed to change baudrate", "error")
+            logger.print("Failed to change baudrate", Logger.ERROR)
             return False
-        logger.print("Switching to baudrate: {}".format(baudrate["dec"]), "success")
+        logger.print("Switching to baudrate: {}".format(baudrate["dec"]), Logger.SUCCESS)
         return True
     else:
-        logger.print("Failed to init BBIO_UART mode", "error")
+        logger.print("Failed to init BBIO_UART mode", Logger.ERROR)
         return False
 
 
@@ -36,7 +36,7 @@ def hb_switch_uart(serial_instance):
     logger = Logger()
     serial_instance.write(b'\x03')
     if "ART1".encode('utf-8') not in serial_instance.read(4):
-        logger.print("Cannot enter UART mode", "error")
+        logger.print("Cannot enter UART mode", Logger.ERROR)
         return False
     return True
 
