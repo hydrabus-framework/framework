@@ -29,13 +29,15 @@ class HydraFramework:
             '': '#ffffff',
 
             # Prompt.
-            'username': '#3399ff',
+            'base': '#3399ff',
             'pound': '#3399ff',
-            'path': '#ff0000 bold',
+            'module': '#ff0000 bold',
+            'category': ''
         })
         self.prompt = [
-            ('class:username', '[hbf] '),
-            ('class:path', ''),
+            ('class:base', '[hbf] '),
+            ('class:module', ''),
+            ('class:category', ''),
             ('class:pound', '> '),
         ]
 
@@ -45,15 +47,19 @@ class HydraFramework:
         :param module_name: The current module name
         """
         if module_name != "":
+            category = module_name.split("/")[0]
+            module = module_name.split("/")[1]
             self.prompt = [
-                ('class:username', '[hbf] '),
-                ('class:path', '({})'.format(module_name)),
+                ('class:base', '[hbf] '),
+                ('class:category', '{}'.format(category)),
+                ('class:module', '({})'.format(module)),
                 ('class:pound', '> '),
             ]
         else:
             self.prompt = [
-                ('class:username', '[hbf] '),
-                ('class:path', ''),
+                ('class:base', '[hbf] '),
+                ('class:category', ''),
+                ('class:module', ''),
                 ('class:pound', '> '),
             ]
 
