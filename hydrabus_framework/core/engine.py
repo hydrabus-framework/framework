@@ -78,7 +78,7 @@ class HydraFramework:
                 imported_module = import_module(module)
                 for x in dir(imported_module):
                     obj = getattr(imported_module, x)
-                    if inspect.isclass(obj) and issubclass(obj, ABaseModule) and obj is not ABaseModule:
+                    if inspect.isclass(obj) and issubclass(obj, AModule) and obj is not AModule:
                         module_path = module.replace('hbfmodules.', '').replace('.', '/')
                         modules.append({"path": module_path, "class": obj})
             return modules
