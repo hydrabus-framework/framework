@@ -1,4 +1,4 @@
-from hydrabus_framework.modules.base import ABaseModule
+from hydrabus_framework.modules.amodule import AModule
 
 
 __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
@@ -24,7 +24,7 @@ def show(hbf_instance, command):
             hbf_instance.logger.print_tabulate(formatted_modules,
                                                headers={"Path": "Path", "Description": "Description"})
         else:
-            if isinstance(hbf_instance.current_module, ABaseModule):
+            if isinstance(hbf_instance.current_module, AModule):
                 if command.split(" ")[1] == "options":
                     hbf_instance.current_module.show_options()
     except IndexError:

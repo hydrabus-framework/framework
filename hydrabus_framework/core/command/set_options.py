@@ -1,4 +1,4 @@
-from hydrabus_framework.modules.base import ABaseModule
+from hydrabus_framework.modules.amodule import AModule
 
 
 __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
@@ -16,7 +16,7 @@ def set_options(hbf_instance, command):
         hbf_instance.logger.print("Bad usage", "error")
         hbf_instance.logger.print("Usage: set option_name value", "info")
     else:
-        if isinstance(hbf_instance.current_module, ABaseModule):
+        if isinstance(hbf_instance.current_module, AModule):
             for option in hbf_instance.current_module.options:
                 if option["Name"].upper() == array_option[1].upper():
                     option["Value"] = array_option[2]

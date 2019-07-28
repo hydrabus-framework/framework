@@ -6,7 +6,7 @@ from tabulate import tabulate
 __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 
-class ABaseModule(ABC):
+class AModule(ABC):
     def __init__(self):
         self.logger = Logger()
         self.name = None
