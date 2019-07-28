@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from hydrabus_framework.utils.logger import Logger
 from tabulate import tabulate
 
 
@@ -8,7 +7,6 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 class AModule(ABC):
     def __init__(self):
-        self.logger = Logger()
         self.name = None
         self.description = None
         self.options = []
