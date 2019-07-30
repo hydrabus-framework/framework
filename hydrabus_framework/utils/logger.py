@@ -54,7 +54,7 @@ class Logger:
         :param text: String, message to be printed
         :return: Nothing
         """
-        print("{}[✘]{} {}".format(Colors.FAIL, Colors.ENDC, text))
+        print("{}[✘]{} {}".format(Colors.FAIL.value, Colors.ENDC.value, text))
 
     @staticmethod
     def _print_success(text):
@@ -63,7 +63,7 @@ class Logger:
         :param text: String, message to be printed
         :return: Nothing
         """
-        print("{}[✔]{} {}".format(Colors.OKGREEN, Colors.ENDC, text))
+        print("{}[✔]{} {}".format(Colors.OKGREEN.value, Colors.ENDC.value, text))
 
     @staticmethod
     def _print_info(text):
@@ -81,7 +81,7 @@ class Logger:
         :param text: String, message to be printed
         :return: Nothing
         """
-        print("{}[✔]{} {}".format(Colors.OKGREEN, text, Colors.ENDC))
+        print("{}[✔]{} {}".format(Colors.OKGREEN.value, text, Colors.ENDC.value))
 
     @staticmethod
     def _print_user_interact(text):
@@ -90,7 +90,7 @@ class Logger:
         :param text: String, message to be printed
         :return: Nothing
         """
-        print("{}[*]{} {}".format(Colors.OKBLUE, text, Colors.ENDC))
+        print("{}[*]{} {}".format(Colors.OKBLUE.value, text, Colors.ENDC.value))
 
     @staticmethod
     def _print_header(text):
@@ -99,7 +99,7 @@ class Logger:
         :param text: String, message to be printed
         :return: Nothing
         """
-        print("{}{}{}".format(Colors.BOLD, text, Colors.ENDC))
+        print("{}{}{}".format(Colors.BOLD.value, text, Colors.ENDC.value))
 
     @staticmethod
     def print_tabulate(data, headers):
