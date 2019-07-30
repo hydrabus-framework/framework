@@ -1,6 +1,6 @@
 from tabulate import tabulate
 
-from hydrabus_framework.utils.color import Colors
+from hydrabus_framework.utils.Colors import Colors
 
 
 __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
