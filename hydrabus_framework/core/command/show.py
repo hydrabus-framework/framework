@@ -1,4 +1,4 @@
-from hydrabus_framework.modules.amodule import AModule
+from hydrabus_framework.modules.AModule import AModule
 
 
 __author__ = "Jordan Ovrè <ghecko78@gmail.com>"

@@ -6,8 +6,8 @@ from importlib import import_module
 from prompt_toolkit.shortcuts import PromptSession
 from prompt_toolkit.styles import Style
 
-from hydrabus_framework.core.dispatcher import Dispatcher
-from hydrabus_framework.modules.amodule import AModule
+from hydrabus_framework.core.Dispatcher import Dispatcher
+from hydrabus_framework.modules.AModule import AModule
 from hydrabus_framework.utils.logger import Logger
 
 
