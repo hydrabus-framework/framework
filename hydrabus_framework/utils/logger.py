@@ -29,7 +29,7 @@ class Logger:
             self._print_header
         ]
 
-    def handle(self, text, level=None):
+    def handle(self, text, level=DEFAULT):
         """
         This function print in different color a given string
         :param text: type string, the string to print on the console
