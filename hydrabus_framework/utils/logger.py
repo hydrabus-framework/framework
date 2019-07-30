@@ -10,6 +10,7 @@ class Logger:
     """
     The aim of this class is to manage core framework and module printing
     """
+    DEFAULT = 0
     ERROR = 1
     SUCCESS = 2
     INFO = 3
@@ -19,27 +20,32 @@ class Logger:
 
     def __init__(self):
         self.categories = [
-            {"category": 1, "fct": self._print_error},
-            {"category": 2, "fct": self._print_success},
-            {"category": 3, "fct": self._print_info},
-            {"category": 4, "fct": self._print_result},
-            {"category": 5, "fct": self._print_user_interact},
-            {"category": 6, "fct": self._print_header},
+            self._print_default,
+            self._print_error,
+            self._print_success,
+            self._print_info,
+            self._print_result,
+            self._print_user_interact,
+            self._print_header
         ]
 
-    def print(self, text, category=None):
+    def handle(self, text, level=None):
         """
         This function print in different color a given string
         :param text: type string, the string to print on the console
-        :param category: the message category
+        :param level: the message category
         :return:
         """
-        for cat in self.categories:
-            if cat["category"] == category:
-                cat["fct"](text)
-                break
-        else:
-            print(text)
+        self.categories[level](text) if (level < len(self.categories)) else self.categories[self.DEFAULT](text)
+
+    @staticmethod
+    def _print_default(text):
+        """
+        Print without style
+        :param text: String, message to be printed
+        :return: Nothing
+        """
+        print(text)
 
     @staticmethod
     def _print_error(text):

@@ -75,7 +75,7 @@ class HydraFramework:
         try:
             package = import_module(module_name)
         except ImportError:
-            self.logger.print('Unable to find any modules, quit the framework...', Logger.ERROR)
+            self.logger.handle('Unable to find any modules, quit the framework...', Logger.ERROR)
             quit(1)
         for loader, module, is_pkg in pkgutil.walk_packages(package.__path__, prefix=package.__name__ + '.'):
             try:
@@ -86,7 +86,7 @@ class HydraFramework:
                         module_path = module.replace('hbfmodules.', '').replace('.', '/')
                         modules.append({"path": module_path, "class": obj})
             except ImportError:
-                self.logger.print('Error dynamically import package "{}"...'.format(module), Logger.ERROR)
+                self.logger.handle('Error dynamically import package "{}"...'.format(module), Logger.ERROR)
         return modules
 
     def run(self):

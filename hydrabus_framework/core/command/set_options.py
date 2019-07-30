@@ -1,4 +1,5 @@
 from hydrabus_framework.modules.AModule import AModule
+from hydrabus_framework.utils.logger import Logger
 
 
 __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
@@ -24,4 +25,4 @@ def set_options(hbf_instance, command):
                     hbf_instance.logger.print(msg)
                     break
             else:
-                hbf_instance.logger.print("option does not exist", "error")
+                hbf_instance.logger.print("option does not exist", Logger.ERROR)

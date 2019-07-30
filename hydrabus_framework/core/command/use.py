@@ -1,3 +1,6 @@
+from hydrabus_framework.utils.logger import Logger
+
+
 __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 
@@ -19,4 +22,4 @@ def use(hbf_instance, command):
                 hbf_instance.update_prompt(module["path"])
                 break
         else:
-            print("module not found")
+            hbf_instance.logger.handle("module not found", Logger.ERROR)

@@ -57,7 +57,7 @@ def hb_wait_ubtn(serial_instance):
                 break
         if time.time() > timeout:
             logger = Logger()
-            logger.print("Wait UBTN timeout reached", Logger.ERROR)
+            logger.handle("Wait UBTN timeout reached", Logger.ERROR)
             break
 
 
@@ -74,5 +74,5 @@ def hb_connect(device, baudrate, timeout):
         serial_instance = serial.Serial(device, baudrate, timeout=timeout)
         return serial_instance
     except serial.serialutil.SerialException as err:
-        logger.print(err, Logger.ERROR)
+        logger.handle(err, Logger.ERROR)
         return False
