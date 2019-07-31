@@ -14,14 +14,14 @@ def set_options(hbf_instance, *args):
     """
     if len(args) < 3:
         hbf_instance.logger.handle("Bad usage", Logger.ERROR)
-        hbf_instance.logger.print("Usage: set option_name value", Logger.INFO)
+        hbf_instance.logger.handle("Usage: set option_name value", Logger.INFO)
     else:
         if isinstance(hbf_instance.current_module, AModule):
             for option in hbf_instance.current_module.options:
                 if option["Name"].upper() == args[1].upper():
                     option["Value"] = args[2]
                     msg = "{} ==> {}".format(option["Name"], args[2])
-                    hbf_instance.logger.print(msg)
+                    hbf_instance.logger.handle(msg)
                     break
             else:
-                hbf_instance.logger.print("option does not exist", Logger.ERROR)
+                hbf_instance.logger.handle("option does not exist", Logger.ERROR)
