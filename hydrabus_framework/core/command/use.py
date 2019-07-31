@@ -32,7 +32,7 @@ def use(hbf_instance, *args):
                 if hbf_instance.current_module is not None:
                     hbf_instance.modules_history.append({"path": module["path"], "class": module["class"]()})
                 hbf_instance.current_module = module["class"]()
-                hbf_instance.update_prompt(module["path"])
+                hbf_instance.current_module_name = module["path"]
                 break
         else:
             hbf_instance.logger.handle("module not found", Logger.ERROR)

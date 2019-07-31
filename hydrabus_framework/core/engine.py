@@ -22,6 +22,7 @@ class HydraFramework:
         self.logger = Logger()
         self.app_path = sys.path[0]
         self.current_module = None
+        self.current_module_name = None
         self.modules = self._list_modules()
         self.modules_history = []
         self.dispatcher = Dispatcher()
@@ -42,14 +43,14 @@ class HydraFramework:
             ('class:pound', '> '),
         ]
 
-    def update_prompt(self, module_name):
+    def update_prompt(self):
         """
         Update the user prompt
         :param module_name: The current module name
         """
-        if module_name != "":
-            category = module_name.split("/")[0]
-            module = module_name.split("/")[1]
+        if self.current_module_name is not None:
+            category = self.current_module_name.split("/")[0]
+            module = self.current_module_name.split("/")[1]
             self.prompt = [
                 ('class:base', '[hbf] '),
                 ('class:category', '{}'.format(category)),
@@ -101,5 +102,6 @@ class HydraFramework:
             while True:
                 command = session.prompt(self.prompt, style=self.prompt_style)
                 self.dispatcher.handler(self, command)
+                self.update_prompt()
         except KeyboardInterrupt:
             exit(1)
