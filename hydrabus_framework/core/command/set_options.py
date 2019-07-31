@@ -5,23 +5,22 @@ from hydrabus_framework.utils.logger import Logger
 __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 
-def set_options(hbf_instance, command):
+def set_options(hbf_instance, *args):
     """
     Sets a context-specific variable to a value
-    :param command: string, user seized entry
+    :param args: varargs command options
     :param hbf_instance: Hydrabus framework instance (self)
     :return: Nothing
     """
-    array_option = command.split(" ")
-    if len(array_option) < 3:
-        hbf_instance.logger.print("Bad usage", "error")
-        hbf_instance.logger.print("Usage: set option_name value", "info")
+    if len(args) < 3:
+        hbf_instance.logger.handle("Bad usage", Logger.ERROR)
+        hbf_instance.logger.print("Usage: set option_name value", Logger.INFO)
     else:
         if isinstance(hbf_instance.current_module, AModule):
             for option in hbf_instance.current_module.options:
-                if option["Name"].upper() == array_option[1].upper():
-                    option["Value"] = array_option[2]
-                    msg = "{} ==> {}".format(option["Name"], array_option[2])
+                if option["Name"].upper() == args[1].upper():
+                    option["Value"] = args[2]
+                    msg = "{} ==> {}".format(option["Name"], args[2])
                     hbf_instance.logger.print(msg)
                     break
             else:

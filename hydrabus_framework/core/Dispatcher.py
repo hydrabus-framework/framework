@@ -1,5 +1,6 @@
-import inspect
 import os
+
+from inspect import signature
 
 from hydrabus_framework.core.command.run import run_module
 from hydrabus_framework.core.command.show import show
@@ -28,14 +29,13 @@ class Dispatcher:
         :param hbf_instance: Hydrabus framework instance (self)
         :param command: User input
         """
+        args = command.split(" ")
         for cmd in self.commands:
             if command.split(" ")[0] == cmd["name"]:
-                if len(inspect.getfullargspec(cmd["run"])[0]) == 2:
-                    cmd["run"](hbf_instance, command)
-                elif len(inspect.getfullargspec(cmd["run"])[0]) == 1:
-                    cmd["run"](hbf_instance)
+                if len(signature(cmd["run"]).parameters) > 1:
+                    cmd["run"](hbf_instance, *args)
                 else:
-                    cmd["run"]()
+                    cmd["run"](hbf_instance)
                 break
         else:
             os.system(command)
