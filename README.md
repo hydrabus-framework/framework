@@ -21,3 +21,6 @@ This framework work like metasploit. Simply run hbfconsole, load any available m
 
 Follow the guideline on the [CONTRIBUTING.md](CONTRIBUTING.md) files
 
+## Thanks
+
+I would like to thanks [@Nitr4x](https://github.com/Nitr4x) for his code review and ideas helping me to improve this framework.
