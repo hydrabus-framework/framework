@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is a framework around the (hydrabus project)[https://hydrabus.com/].
+This project is a framework around the [hydrabus project](https://hydrabus.com/).
 It provide multiple modules allowing you to work efficiently and save times on any hardware project.
 
 ## Installation
