@@ -16,11 +16,11 @@ If you do not care to follow these rules, your contribution will be closed.
 
 ## Code contributions
 
-    Follow the (PEP 8 style guide for python code)[https://www.python.org/dev/peps/pep-0008/]
+    Follow the [PEP 8 style guide for python code](https://www.python.org/dev/peps/pep-0008/)
     Do one commit for each modification/addition/improvement
     Use explicit commit message
     License your code as GPLv3 clause
-    Always start a new module using the (hbfmodules.skeleton)[https://github.com/hydrabus-framework/hbfmodules.skeleton] base repository
+    Always start a new module using the [hbfmodules.skeleton](https://github.com/hydrabus-framework/hbfmodules.skeleton) base repository
 
 ## Pull Requests
 
