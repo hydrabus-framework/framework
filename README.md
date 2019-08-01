@@ -19,5 +19,5 @@ This framework work like metasploit. Simply run hbfconsole, load any available m
 
 ## Contributing
 
-Follow the guideline on the (CONTRIBUTING.md)[CONTRIBUTING.md] files
+Follow the guideline on the [CONTRIBUTING.md](CONTRIBUTING.md) files
 
