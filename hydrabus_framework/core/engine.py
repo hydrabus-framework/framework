@@ -96,8 +96,15 @@ class HydraFramework:
     def simple_cmd_dict(self):
         commands = {}
         for command in self.dispatcher.commands:
-            commands.update({command["name"]: []})
+            commands.update({command["name"]: command["arguments"]})
         return commands
+
+    def options_list(self):
+        options = []
+        if self.current_module is not None:
+            for option in self.current_module.options:
+                options.append(option["Name"])
+        return options
 
     def run(self):
         """

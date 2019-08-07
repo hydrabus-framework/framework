@@ -14,13 +14,15 @@ from hydrabus_framework.core.command.help import hbf_help
 class Dispatcher:
     def __init__(self):
         self.commands = [
-            {"name": "show", "descr": "modules|options: Displays modules list, or module options", "run": show},
-            {"name": "help", "descr": "Help menu", "run": hbf_help},
-            {"name": "exit", "descr": "Exit the console", "run": hbf_exit},
-            {"name": "use", "descr": "Load a module by name", "run": use},
-            {"name": "run", "descr": "Run the selected module", "run": run_module},
-            {"name": "back", "descr": "Move back from the current context", "run": back},
-            {"name": "set", "descr": "Sets a context-specific variable to a value", "run": set_options}
+            {"name": "show", "descr": "modules|options: Displays modules list, or module options", "run": show,
+             "arguments": ["options", "modules"]},
+            {"name": "help", "descr": "Help menu", "run": hbf_help, "arguments": []},
+            {"name": "exit", "descr": "Exit the console", "run": hbf_exit, "arguments": []},
+            {"name": "use", "descr": "Load a module by name", "run": use, "arguments": []},
+            {"name": "run", "descr": "Run the selected module", "run": run_module, "arguments": []},
+            {"name": "back", "descr": "Move back from the current context", "run": back, "arguments": []},
+            {"name": "set", "descr": "Sets a context-specific variable to a value", "run": set_options,
+             "arguments": []},
         ]
 
     def handler(self, hbf_instance, command):

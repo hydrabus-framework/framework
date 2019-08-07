@@ -11,7 +11,9 @@ def back(hbf_instance):
         previous_module = hbf_instance.modules_history.pop()
         hbf_instance.current_module_name = previous_module["path"]
         hbf_instance.current_module = previous_module["class"]
+        hbf_instance.console_completer.words_dic["set"] = hbf_instance.options_list()
     else:
         if hbf_instance.current_module is not None:
             hbf_instance.current_module = None
             hbf_instance.current_module_name = None
+            hbf_instance.console_completer.words_dic["set"] = []
