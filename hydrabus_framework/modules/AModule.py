@@ -8,7 +8,12 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 class AModule(ABC):
     def __init__(self):
         self.name = None
-        self.description = None
+        self.meta = {
+            'name': '',
+            'version': '',
+            'description': '',
+            'author': ''
+        }
         self.options = []
 
     def __name__(self):
@@ -49,7 +54,7 @@ class AModule(ABC):
         """
         formatted_options = []
         if len(self.options) > 0:
-            print(self.get_description())
+            self.print_meta()
             for option in self.options:
                 if option["Default"] != "" and option["Value"] == "":
                     formatted_options.append(
@@ -72,8 +77,10 @@ class AModule(ABC):
             print("\n{}\n".format(tabulate(formatted_options, headers={"Name": "Name", "Description": "Description",
                                                                        "Value": "Value", "Required": "Required"})))
 
-    def get_description(self):
-        return self.description
+    def print_meta(self):
+        print('Author: {}'.format(self.meta['author']))
+        print('Module name: {}, version {}'.format(self.meta['name'], self.meta['version']))
+        print('Description: {}'.format(self.meta['description']))
 
     @abstractmethod
     def run(self):
