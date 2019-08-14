@@ -1,3 +1,5 @@
-tabulate
-prompt_toolkit
-serial
+tabulate==0.8.3
+prompt_toolkit==2.0.9
+pyserial==3.4
+serial==0.0.97
+ptterm==0.2
