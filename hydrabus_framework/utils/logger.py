@@ -1,9 +1,40 @@
+import codecs
+
 from tabulate import tabulate
+from sys import stdout
 
 from hydrabus_framework.utils.Colors import Colors
 
 
 __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
+class Progress:
+    """
+    Progress logger is used to dynamically print records
+    """
+    def __init__(self, header=''):
+        self.header = header
+        self.full_msg = ''
+
+    def status(self, msg):
+        """
+        Dynamically print character on the same line by calling it multiple time
+        :param msg:
+        :return:
+        """
+        # if msg is a white character, convert it to its hex representation
+        if msg.isspace() and msg != " ":
+            self.full_msg += '0x{}'.format(codecs.encode(bytes(msg, 'utf-8'), 'hex').decode())
+        else:
+            self.full_msg += msg
+        print('{}: {}'.format(self.header, self.full_msg), end='\r', flush=True)
+
+    def stop(self):
+        if self.full_msg == '':
+            print(end='', flush=False)
+        else:
+            print(flush=False)
 
 
 class Logger:
@@ -110,3 +141,12 @@ class Logger:
         :return: Nothing
         """
         print("\n{}\n".format(tabulate(data, headers=headers)))
+
+    @staticmethod
+    def progress(header):
+        """
+        Creates a new progress logger
+        :return: Progress class instance
+        """
+        return Progress(header)
+
