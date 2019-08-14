@@ -22,6 +22,17 @@ If you do not care to follow these rules, your contribution will be closed.
 * License your code as GPLv3 clause
 * Always start a new module using the [hbfmodules.skeleton](https://github.com/hydrabus-framework/hbfmodules.skeleton) base repository
 
+## Create a new module
+
+Create an issue on [hbfmodules.skeleton](https://github.com/hydrabus-framework/hbfmodules.skeleton) with these detailes:
+
+* Module name (hbfmodules.<Name>)
+* A short description
+* Module category (uart, jtag, spi, ...)
+
+If I accept the module, I will create an empty repository.
+Initiate it using [hbfmodules.skeleton](https://github.com/hydrabus-framework/hbfmodules.skeleton) module.
+
 ## Pull Requests
 
 * Write "WIP" on your PR if submitting working yet unfinished code.
