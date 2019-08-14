@@ -9,6 +9,7 @@ from hydrabus_framework.core.command.use import use
 from hydrabus_framework.core.command.back import back
 from hydrabus_framework.core.command.quit import hbf_exit
 from hydrabus_framework.core.command.help import hbf_help
+from hydrabus_framework.core.command.miniterm import miniterm
 
 
 class Dispatcher:
@@ -23,6 +24,7 @@ class Dispatcher:
             {"name": "back", "descr": "Move back from the current context", "run": back, "arguments": []},
             {"name": "set", "descr": "Sets a context-specific variable to a value", "run": set_options,
              "arguments": []},
+            {"name": "miniterm", "descr": "Open a miniterm serial console", "run": miniterm, "arguments": []}
         ]
 
     def handler(self, hbf_instance, command):

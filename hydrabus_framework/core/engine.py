@@ -6,6 +6,7 @@ from importlib import import_module
 from prompt_toolkit.shortcuts import PromptSession
 from prompt_toolkit.styles import Style
 
+from hydrabus_framework.core.config import load_config
 from hydrabus_framework.core.Dispatcher import Dispatcher
 from hydrabus_framework.modules.AModule import AModule
 from hydrabus_framework.utils.logger import Logger
@@ -28,6 +29,7 @@ class HydraFramework:
         self.console_completer = NestedCompleter(self.simple_cmd_dict(), ignore_case=True)
         self.modules = self._list_modules()
         self.modules_history = []
+        self.config = load_config()
         self.prompt_style = Style.from_dict({
             # User input (default text).
             '': '#ffffff',
