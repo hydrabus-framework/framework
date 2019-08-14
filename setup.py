@@ -127,10 +127,11 @@ setup(
     author='Ghecko',
     url='https://github.com/hydrabus-framework/framework',
     install_requires=[
-        'tabulate',
-        'prompt_toolkit',
-        'serial',
-        'requests'
+        'tabulate==0.8.3',
+        'prompt_toolkit==2.0.9',
+        'serial==0.0.97',
+        'pyserial==3.4',
+        'requests==2.22.0'
     ],
     classifiers=[
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
