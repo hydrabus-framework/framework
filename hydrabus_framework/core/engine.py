@@ -30,15 +30,16 @@ class HydraFramework:
         self.modules = self._list_modules()
         self.modules_history = []
         self.config = load_config()
+        self.fill_setc_completion()
         self.prompt_style = Style.from_dict({
-            # User input (default text).
-            '': '#ffffff',
+            # User input (default text), no value = system default.
+            '': '',
 
             # Prompt.
-            'base': '#3399ff',
-            'pound': '#3399ff',
-            'module': '#ff0000 bold',
-            'category': '#ffffff',
+            'base': self.config['THEME']['base'],
+            'pound': self.config['THEME']['pound'],
+            'module': self.config['THEME']['module'],
+            'category': self.config['THEME']['category'],
         })
         self.prompt = [
             ('class:base', '[hbf] '),
@@ -47,10 +48,14 @@ class HydraFramework:
             ('class:pound', '> '),
         ]
 
+    def fill_setc_completion(self):
+        for section in self.config:
+            if section != "DEFAULT":
+                self.console_completer.words_dic["setc"].append(section)
+
     def update_prompt(self):
         """
         Update the user prompt
-        :param module_name: The current module name
         """
         if self.current_module_name is not None:
             category = self.current_module_name.split("/")[0]

@@ -29,6 +29,13 @@ def create_default_config(config, hbf_dir, hbf_config_path):
         'serial_port_encoding': 'UTF-8',
         'eol': 'CR'
     }
+    config['THEME'] = {
+        # Prompt.
+        'base': '#3399ff',
+        'pound': '#3399ff',
+        'module': '#ff0000 bold',
+        'category': '#ffffff',
+    }
     with hbf_config_path.open('w') as cfg_file:
         config.write(cfg_file)
 
