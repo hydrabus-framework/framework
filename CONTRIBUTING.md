@@ -24,9 +24,9 @@ If you do not care to follow these rules, your contribution will be closed.
 
 ## Create a new module
 
-Create an issue on [hbfmodules.skeleton](https://github.com/hydrabus-framework/hbfmodules.skeleton) with these detailes:
+Create an issue on [hbfmodules.skeleton](https://github.com/hydrabus-framework/hbfmodules.skeleton) with these details:
 
-* Module name (hbfmodules.<Name>)
+* Module name (hbfmodules.CATEGORY.Name)
 * A short description
 * Module category (uart, jtag, spi, ...)
 
