@@ -106,7 +106,9 @@ def _post_install():
                     print("Failed to download release for the module {}".format(module))
     print("{} module(s) installed".format(installed))
     if len(not_installed) > 0:
-        print("These modules could not be installed: {}".format(not_installed))
+        print("These modules can not be installed:")
+        for module in not_installed:
+            print(" - {}".format(module))
 
 
 class PostInstall(install):
@@ -120,7 +122,7 @@ class PostInstall(install):
 
 setup(
     name=name,
-    version='0.1.0',
+    version='0.0.1',
     packages=find_packages(),
     license='GPLv3',
     description=description,
@@ -139,7 +141,7 @@ setup(
         'Development Status :: 3 - Alpha'
     ],
     keywords=['hydrabus', 'framework', 'hardware', 'security', 'core', 'engine'],
-    scripts=['hydrabus_framework/hbfconsole'],
+    scripts=['hydrabus_framework/hbfconsole', 'hydrabus_framework/hbfupdate'],
     cmdclass={
         'install': PostInstall,
     },
