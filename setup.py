@@ -1,12 +1,7 @@
 #!/usr/bin/env python
 
 import atexit
-import errno
-import os
-import re
-import subprocess
-import tarfile
-import traceback
+import importlib
 
 from setuptools import setup, find_packages
 from setuptools.command.install import install
@@ -18,97 +13,13 @@ description = 'Hydrabus Framework core'
 name = 'hydrabus_framework'
 
 
-def _extract_tarball(filename):
-    tar = tarfile.open(filename)
-    path = re.sub(r'\.tar.gz$', '', filename)
-    setup_dir = '{}/{}'.format(path, tar.getmembers()[0].name)
-    tar.extractall(path)
-    tar.close()
-    return setup_dir
-
-
-def _get_modules(requests, github_base_url):
-    modules = []
-    resp = requests.request('GET', '{}{}'.format(github_base_url, '/orgs/hydrabus-framework/repos'))
-    if resp.status_code == 200:
-        for pkg in resp.json():
-            modules.append(pkg["name"])
-    return modules
-
-
-def _get_filename_from_cd(cd):
-    """
-    Get filename from content-disposition
-    """
-    if not cd:
-        return None
-    fname = re.findall('filename=(.+)', cd)
-    if len(fname) == 0:
-        return None
-    return fname[0]
-
-
-def _get_latest_release(requests, github_base_url, module):
-    """
-    Get the latest release of a module, if no release
-    :param module: module name
-    :return: url or None if not found
-    """
-    module_release_url = github_base_url + '/repos/hydrabus-framework/{}/releases/latest'.format(module)
-    resp = requests.request('GET', module_release_url)
-    if resp.status_code == 200:
-        return resp.json()["tarball_url"]
-    else:
-        return None
-
-
-def _download_release(requests, module_tarball_url):
-    resp = requests.request('GET', module_tarball_url)
-    if resp.status_code == 200:
-        filename = '/tmp/hbfmodules/{}'.format(_get_filename_from_cd(resp.headers.get('content-disposition')))
-        if not os.path.exists(os.path.dirname(filename)):
-            try:
-                os.makedirs(os.path.dirname(filename))
-            except OSError as exc:
-                if exc.errno != errno.EEXIST:
-                    raise
-        open(filename, 'wb').write(resp.content)
-        return filename
-    return None
-
-
 def _post_install():
     print('----------------------------------------------------------------------')
-    print('------------------Get and install available modules-------------------')
+    print('----------------Retrieve and install available modules----------------')
     print('----------------------------------------------------------------------')
-    github_base_url = 'https://api.github.com'
-    requests = __import__('requests')
-    installed = 0
-    not_installed = []
-    modules = _get_modules(requests, github_base_url)
-    if len(modules) > 0:
-        for module in modules:
-            release_tarball_url = _get_latest_release(requests, github_base_url, module)
-            if release_tarball_url:
-                filename = _download_release(requests, release_tarball_url)
-                if filename:
-                    setup_dir = _extract_tarball(filename)
-                    try:
-                        return_code = subprocess.call(['python', 'setup.py', 'install'], cwd=setup_dir)
-                        if return_code != 0:
-                            not_installed.append(module)
-                        else:
-                            installed += 1
-                    except:
-                        print("Unable to install {} module".format(module))
-                        traceback.print_exc()
-                else:
-                    print("Failed to download release for the module {}".format(module))
-    print("{} module(s) installed".format(installed))
-    if len(not_installed) > 0:
-        print("These modules can not be installed:")
-        for module in not_installed:
-            print(" - {}".format(module))
+    hbfupdate = importlib.import_module('hydrabus_framework.utils.hbfupdate')
+    update = hbfupdate.update
+    update()
 
 
 class PostInstall(install):
