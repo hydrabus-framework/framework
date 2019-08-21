@@ -61,6 +61,23 @@ def hb_wait_ubtn(serial_instance):
             break
 
 
+def hb_connect_bbio(device, baudrate, timeout):
+    """
+    Connect to the hydrabus device, and then, switch to bbio mode
+    :param device: String, hydrabus device path
+    :param baudrate: integer, baudrate speed to communicate with hydrabus
+    :param timeout: integer, read timeout value (sec)
+    :return: serial instance
+    """
+    logger = Logger()
+    serial_instance = hb_connect(device, baudrate, timeout)
+    if hb_switch_bbio(serial_instance):
+        return serial_instance
+    else:
+        logger.handle('Unable to switch hydrabus into bbio mode')
+        return None
+
+
 def hb_connect(device, baudrate, timeout):
     """
     Connect to the hydrabus device
