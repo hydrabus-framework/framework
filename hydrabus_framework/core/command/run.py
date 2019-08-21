@@ -18,6 +18,8 @@ def run_module(hbf_instance):
         if ret:
             try:
                 hbf_instance.current_module.run()
+            except KeyboardInterrupt:
+                pass
             except:
                 hbf_instance.logger.handle("Error running module", Logger.ERROR)
                 traceback.print_exc()
