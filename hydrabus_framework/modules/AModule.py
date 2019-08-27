@@ -21,49 +21,6 @@ class AModule(ABC):
     def __name__(self):
         return self.name
 
-    def _args_validator(self):
-        """
-        Check arguments type validity & Convert to the specified format
-        :return: Bool
-        """
-        for option in self.options:
-            try:
-                if option["Type"] == "int":
-                    if not isinstance(option["Value"], int):
-                        option["Value"] = int(option["Value"], 10)
-                if option["Type"] == "bool":
-                    if not isinstance(option["Value"], bool):
-                        if str(option["Value"]).upper() == "FALSE":
-                            option["Value"] = False
-                        elif str(option["Value"]).upper() == "TRUE":
-                            option["Value"] = True
-                        else:
-                            raise ValueError
-                if option["Value"] == "None":
-                    option["Value"] = None
-            except ValueError:
-                self.logger.handle("Value error: {} is not a member of {}".format(option["Name"], option["Type"]))
-                return False
-        return True
-
-    def check_args(self):
-        """
-        Check if all arguments are defined by user, or set default value if available
-        :return: Bool
-        """
-        if len(self.options) > 0:
-            for option in self.options:
-                if option["Required"] and option["Value"] == "":
-                    if option["Default"] == "":
-                        self.logger.handle("OptionValidateError: The following options failed to validate: {}."
-                                           .format(option["name"]), Logger.ERROR)
-                        return False
-                    else:
-                        option["Value"] = option["Default"]
-            if not self._args_validator():
-                return False
-        return True
-
     def get_option_value(self, option_name):
         """
         Return the value of a specific option

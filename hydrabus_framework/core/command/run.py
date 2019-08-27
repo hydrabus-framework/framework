@@ -1,5 +1,6 @@
 import traceback
 
+from hydrabus_framework.core.utils.Validator import Validator
 from hydrabus_framework.modules.AModule import AModule
 from hydrabus_framework.utils.logger import Logger
 
@@ -14,7 +15,7 @@ def run_module(hbf_instance):
     :return: Nothing
     """
     if isinstance(hbf_instance.current_module, AModule):
-        ret = hbf_instance.current_module.check_args()
+        ret = Validator().check_args(hbf_instance.current_module.options)
         if ret:
             try:
                 hbf_instance.current_module.run()
