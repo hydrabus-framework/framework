@@ -17,7 +17,7 @@ def _post_install():
     print('----------------------------------------------------------------------')
     print('----------------Retrieve and install available modules----------------')
     print('----------------------------------------------------------------------')
-    hbfupdate = importlib.import_module('hydrabus_framework.utils.hbfupdate')
+    hbfupdate = importlib.import_module('hydrabus_framework.core.utils.hbfupdate')
     update = hbfupdate.update
     update()
 
