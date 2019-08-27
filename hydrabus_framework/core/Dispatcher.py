@@ -20,7 +20,8 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 class Dispatcher:
     def __init__(self):
         self.commands = [
-            {"name": "show", "descr": "modules|options: Displays modules list, or module options", "run": show,
+            {"name": "show", "descr": "modules|options|config: Displays modules list, "
+                                      "module options or Framework config", "run": show,
              "arguments": {"options", "modules", "config"}},
             {"name": "help", "descr": "Help menu", "run": hbf_help, "arguments": {}},
             {"name": "exit", "descr": "Exit the console", "run": hbf_exit, "arguments": {}},
