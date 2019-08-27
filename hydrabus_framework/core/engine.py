@@ -8,9 +8,9 @@ from prompt_toolkit.styles import Style
 
 from hydrabus_framework.core.config import load_config
 from hydrabus_framework.core.Dispatcher import Dispatcher
+from hydrabus_framework.core.utils.NestedCompleter import NestedCompleter
 from hydrabus_framework.modules.AModule import AModule
 from hydrabus_framework.utils.logger import Logger
-from hydrabus_framework.utils.NestedCompleter import NestedCompleter
 
 
 __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
