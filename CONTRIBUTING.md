@@ -2,8 +2,8 @@
 
 ## Before starting
 
-Thanks for your interest on the Hydrabus-framework project !
-There are multiple ways to help beyong just writting code:
+Thanks for your interest in the Hydrabus-framework project!
+There are multiple ways to help beyond just writing code:
 
 * Submit bug and feature requests with detailed information about your issue or idea.
 * Help fellow users with open issues.
@@ -37,23 +37,23 @@ Initiate it using [hbfmodules.skeleton](https://github.com/hydrabus-framework/hb
 
 * Write "WIP" on your PR if submitting working yet unfinished code.
 * Include only one module per pull request.
-* Always start your work on the master branch to ensure using the latest and stable code base.
+* Always start your work on the master branch to ensure using the latest and stable codebase.
 * Use, as possible, function under utils directory.
 * Include verification steps on your PR message (target, environment, ...).
-* Include a short summary of what your code/module do on your PR message.
+* Include a short summary of what your code/module does on your PR message.
 
 
 ## Bug fixes
 
-* Link any corresponding issues in te format of ```See #1234``` in your PR description
-* Explain in a few word how do you fix it in your PR message
+* Link any corresponding issues in the format of ```See #1234``` in your PR description
+* Explain in a few words how do you fix it in your PR message
 
 ## Bug reports
 
 * Write a detailed description of your bug and use a descriptive title.
-* Give much details as possible of your environment.
+* Give many details as possible of your environment.
 * Include reproduction steps, stack traces and anything that might help us fix your bug.
 * Search for your bug in opened issues before opening a new issue.
 
 
-Thank you for taking a few moments to read this contributing guidelines !
+Thank you for taking a few moments to read this contributing guideline !

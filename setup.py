@@ -24,7 +24,7 @@ def _post_install():
 
 class PostInstall(install):
     """
-    This post install script download and install all available modules that have a released package
+    This post-install script downloads and installs all available modules that have a released package
     """
     def __init__(self, *args, **kwargs):
         super(PostInstall, self).__init__(*args, **kwargs)

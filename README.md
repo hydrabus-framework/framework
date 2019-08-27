@@ -3,7 +3,7 @@
 ## Description
 
 This project is a framework around the [hydrabus project](https://hydrabus.com/).
-It provide multiple modules allowing you to work efficiently and save times on any hardware project.
+It provides multiple modules allowing you to work efficiently and save time on any hardware project.
 
 ## Installation
 
@@ -15,7 +15,7 @@ python3 setup.py install
 
 ## Usage
 
-This framework work like metasploit. Simply run hbfconsole, load any available modules and enjoy !
+This framework work like metasploit. Simply run hbfconsole, load any available modules and enjoy!
 
 ## Configuration explanation
 
