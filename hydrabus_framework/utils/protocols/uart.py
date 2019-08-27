@@ -33,10 +33,9 @@ def hb_switch_uart(serial_instance):
     :param serial_instance: hydrabus serial instance
     :return: Bool
     """
-    logger = Logger()
     serial_instance.write(b'\x03')
     if "ART1".encode('utf-8') not in serial_instance.read(4):
-        logger.handle("Cannot enter UART mode", Logger.ERROR)
+        Logger().handle("Cannot enter UART mode", Logger.ERROR)
         return False
     return True
 

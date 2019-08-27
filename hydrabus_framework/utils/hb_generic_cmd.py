@@ -56,8 +56,7 @@ def hb_wait_ubtn(serial_instance):
                 serial_instance.read(serial_instance.in_waiting)
                 break
         if time.time() > timeout:
-            logger = Logger()
-            logger.handle("Wait UBTN timeout reached", Logger.ERROR)
+            Logger().handle("Wait UBTN timeout reached", Logger.ERROR)
             break
 
 
@@ -69,12 +68,11 @@ def hb_connect_bbio(device, baudrate, timeout):
     :param timeout: integer, read timeout value (sec)
     :return: serial instance
     """
-    logger = Logger()
     serial_instance = hb_connect(device, baudrate, timeout)
     if hb_switch_bbio(serial_instance):
         return serial_instance
     else:
-        logger.handle('Unable to switch hydrabus into bbio mode')
+        Logger().handle('Unable to switch hydrabus into bbio mode')
         return None
 
 
@@ -86,10 +84,9 @@ def hb_connect(device, baudrate, timeout):
     :param timeout: integer, read timeout value (sec)
     :return: serial instance
     """
-    logger = Logger()
     try:
         serial_instance = serial.Serial(device, baudrate, timeout=timeout)
         return serial_instance
     except serial.serialutil.SerialException as err:
-        logger.handle(err, Logger.ERROR)
+        Logger().handle(err, Logger.ERROR)
         return False
