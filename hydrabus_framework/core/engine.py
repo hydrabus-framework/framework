@@ -26,11 +26,11 @@ class HydraFramework:
         self.current_module = None
         self.current_module_name = None
         self.dispatcher = Dispatcher()
-        self.console_completer = NestedCompleter(self.simple_cmd_dict(), ignore_case=True)
         self.modules = self._list_modules()
         self.modules_history = []
         self.config = load_config()
-        self.fill_setc_completion()
+        self.completer_nested_dict = self._get_dict_completion()
+        self.console_completer = NestedCompleter.from_nested_dict(self.completer_nested_dict)
         self.prompt_style = Style.from_dict({
             # User input (default text), no value = system default.
             '': '',
@@ -47,11 +47,6 @@ class HydraFramework:
             ('class:category', ''),
             ('class:pound', '> '),
         ]
-
-    def fill_setc_completion(self):
-        for section in self.config:
-            if section != "DEFAULT":
-                self.console_completer.words_dic["setc"].append(section)
 
     def update_prompt(self):
         """
@@ -74,6 +69,62 @@ class HydraFramework:
                 ('class:pound', '> '),
             ]
 
+    def _get_dict_completion(self):
+        """
+        Get all command with associated arguments and return a dict for NestedCompleter
+        :return: nested dictionary
+                nested_dict = {
+                                'set': {
+                                    'hydrabus': None,
+                                    ...
+                                },
+                                'setc': {
+                                    {
+                                        'section1': {
+                                            {key1: None},
+                                            {key2: None}
+                                        }
+                                    }
+                                'exit': None
+                                'use': {
+                                    {'module1': None},
+                                    ...
+                                }
+                }
+        """
+        nested_completion_dict = {}
+        modules_dict = {}
+        config_dict = {}
+        # Get all based command
+        for command in self.dispatcher.commands:
+            if len(command["arguments"]) == 0:
+                nested_completion_dict.update({command["name"]: None})
+            else:
+                nested_completion_dict.update({command["name"]: command["arguments"]})
+        # Append all loaded module to use command
+        for module in self.modules:
+            modules_dict.update({module["path"]: None})
+        nested_completion_dict["use"] = modules_dict
+        # Append all config section and key to setc command
+        for section in self.config:
+            if section != "DEFAULT":
+                config_key_dict = {}
+                config_dict.update({section: None})
+                if len(self.config[section]) > 0:
+                    for key in self.config[section]:
+                        config_key_dict.update({key: None})
+                    config_dict[section] = config_key_dict
+        nested_completion_dict["setc"] = config_dict
+        return nested_completion_dict
+
+    def update_completer_options_list(self):
+        options = {}
+        if self.current_module is not None:
+            for option in self.current_module.options:
+                options.update({option["Name"]: None})
+        self.completer_nested_dict["set"] = options
+        self.console_completer = NestedCompleter.from_nested_dict(self.completer_nested_dict)
+
     def _list_modules(self):
         """
         Generate modules path and attributes list
@@ -95,23 +146,10 @@ class HydraFramework:
                     if inspect.isclass(obj) and issubclass(obj, AModule) and obj is not AModule:
                         module_path = module.replace('hbfmodules.', '').replace('.', '/')
                         modules.append({"path": module_path, "class": obj})
-                        self.console_completer.words_dic["use"].append(module_path)
+                        # self.console_completer.words_dic["use"].append(module_path)
             except ImportError:
                 self.logger.handle('Error dynamically import package "{}"...'.format(module), Logger.ERROR)
         return modules
-
-    def simple_cmd_dict(self):
-        commands = {}
-        for command in self.dispatcher.commands:
-            commands.update({command["name"]: command["arguments"]})
-        return commands
-
-    def options_list(self):
-        options = []
-        if self.current_module is not None:
-            for option in self.current_module.options:
-                options.append(option["Name"])
-        return options
 
     def run(self):
         """

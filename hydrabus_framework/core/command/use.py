@@ -33,7 +33,7 @@ def use(hbf_instance, *args):
                     hbf_instance.modules_history.append({"path": module["path"], "class": module["class"]()})
                 hbf_instance.current_module = module["class"]()
                 hbf_instance.current_module_name = module["path"]
-                hbf_instance.console_completer.words_dic["set"] = hbf_instance.options_list()
+                hbf_instance.update_completer_options_list()
                 break
         else:
             hbf_instance.logger.handle("module not found", Logger.ERROR)
