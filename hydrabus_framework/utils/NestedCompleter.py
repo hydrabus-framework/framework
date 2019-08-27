@@ -1,6 +1,9 @@
 from prompt_toolkit.completion import Completion, Completer
 
 
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 class NestedCompleter(Completer):
 
     def __init__(self, words_dic=None, meta_dict=None, ignore_case=True, match_middle=True):

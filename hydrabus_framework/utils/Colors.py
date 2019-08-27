@@ -1,6 +1,9 @@
 from enum import Enum
 
 
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 class Colors(Enum):
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'

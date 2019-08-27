@@ -3,5 +3,8 @@
 from hydrabus_framework.utils.hbfupdate import update
 
 
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 if __name__ == '__main__':
     update(update_framework=True)

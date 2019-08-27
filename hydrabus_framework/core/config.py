@@ -3,6 +3,9 @@ import configparser
 from pathlib import Path
 
 
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 def create_default_config(config, hbf_dir, hbf_config_path):
     """
     :param config: configparser instance

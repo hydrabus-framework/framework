@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 from setuptools.command.install import install
 
 
-__author__ = "Ghecko <ghecko78@gmail.com>"
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 description = 'Hydrabus Framework core'
 name = 'hydrabus_framework'

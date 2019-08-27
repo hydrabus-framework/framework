@@ -14,6 +14,9 @@ from hydrabus_framework.core.command.show import show
 from hydrabus_framework.core.command.use import use
 
 
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
 class Dispatcher:
     def __init__(self):
         self.commands = [
