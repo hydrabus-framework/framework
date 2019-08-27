@@ -31,7 +31,7 @@ class Dispatcher:
             {"name": "save", "descr": "Save the current config into hbf.cfg file", "run": save_config, "arguments": []}
         ]
 
-    def handler(self, hbf_instance, command):
+    def handle(self, hbf_instance, command):
         """
         User console command handler
         :param hbf_instance: Hydrabus framework instance (self)

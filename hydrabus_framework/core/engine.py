@@ -125,7 +125,7 @@ class HydraFramework:
             while True:
                 command = session.prompt(self.prompt, style=self.prompt_style, completer=self.console_completer,
                                          complete_while_typing=False)
-                self.dispatcher.handler(self, command)
+                self.dispatcher.handle(self, command)
                 self.update_prompt()
         except KeyboardInterrupt:
             exit(1)
