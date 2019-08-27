@@ -2,16 +2,16 @@ import os
 
 from inspect import signature
 
-from hydrabus_framework.core.command.run import run_module
-from hydrabus_framework.core.command.show import show
-from hydrabus_framework.core.command.set_options import set_options
-from hydrabus_framework.core.command.use import use
 from hydrabus_framework.core.command.back import back
-from hydrabus_framework.core.command.quit import hbf_exit
 from hydrabus_framework.core.command.help import hbf_help
 from hydrabus_framework.core.command.miniterm import miniterm
-from hydrabus_framework.core.command.set_config import set_config
+from hydrabus_framework.core.command.quit import hbf_exit
+from hydrabus_framework.core.command.run import run_module
 from hydrabus_framework.core.command.save_config import save_config
+from hydrabus_framework.core.command.set_config import set_config
+from hydrabus_framework.core.command.set_options import set_options
+from hydrabus_framework.core.command.show import show
+from hydrabus_framework.core.command.use import use
 
 
 class Dispatcher:
