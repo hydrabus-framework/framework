@@ -84,10 +84,10 @@ def get_latest_framework_version():
 
 def get_latest_release_url(module_name):
     """
-        Get the latest release URL of a module or framework
-        :param module_name: module name
-        :return: url or None if not found
-        """
+    Get the latest release URL of a module or framework
+    :param module_name: module name
+    :return: url or None if not found
+    """
     module_release_url = github_base_url + '/repos/hydrabus-framework/{}/releases/latest'.format(module_name)
     resp = requests.get(module_release_url)
     if resp.status_code == 200:
