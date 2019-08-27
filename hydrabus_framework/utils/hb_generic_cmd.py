@@ -69,11 +69,12 @@ def hb_connect_bbio(device, baudrate, timeout):
     :return: serial instance
     """
     serial_instance = hb_connect(device, baudrate, timeout)
-    if hb_switch_bbio(serial_instance):
-        return serial_instance
-    else:
-        Logger().handle('Unable to switch hydrabus into bbio mode')
-        return None
+    if isinstance(serial_instance, serial.Serial):
+        if hb_switch_bbio(serial_instance):
+            return serial_instance
+        else:
+            Logger().handle('Unable to switch hydrabus into bbio mode')
+            return None
 
 
 def hb_connect(device, baudrate, timeout):
