@@ -2,6 +2,9 @@ from hydrabus_framework.utils.logger import Logger
 
 
 class Validator:
+    """
+    Class allowing to check module options (if set and if format is ok)
+    """
     def __init__(self):
         self.logger = Logger()
 
@@ -42,7 +45,7 @@ class Validator:
                 if option["Required"] and option["Value"] == "":
                     if option["Default"] == "":
                         self.logger.handle("OptionValidateError: The following options failed to validate: {}."
-                                           .format(option["name"]), Logger.ERROR)
+                                           .format(option["Name"]), Logger.ERROR)
                         return False
                     else:
                         option["Value"] = option["Default"]
