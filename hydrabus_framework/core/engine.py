@@ -146,7 +146,6 @@ class HydraFramework:
                     if inspect.isclass(obj) and issubclass(obj, AModule) and obj is not AModule:
                         module_path = module.replace('hbfmodules.', '').replace('.', '/')
                         modules.append({"path": module_path, "class": obj})
-                        # self.console_completer.words_dic["use"].append(module_path)
             except ImportError:
                 self.logger.handle('Error dynamically import package "{}"...'.format(module), Logger.ERROR)
         return modules
@@ -156,8 +155,6 @@ class HydraFramework:
         Main loop, waiting for user input
         :return:
         """
-        # TODO: close everything before exit
-        # TODO: Improve Ctrl+c handle
         session = PromptSession()
         while True:
             try:
