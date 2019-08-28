@@ -41,6 +41,11 @@ def hb_switch_uart(serial_instance):
 
 
 def hb_init_uart(serial_instance):
+    """
+    Enter hydrabus in BBIO and then in UART mode
+    :param serial_instance:
+    :return: Bool
+    """
     if hb_switch_bbio(serial_instance):
         if hb_switch_uart(serial_instance):
             return True

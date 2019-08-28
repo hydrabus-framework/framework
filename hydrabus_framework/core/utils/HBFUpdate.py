@@ -100,6 +100,8 @@ class HBFUpdate:
     def _get_filename_from_cd(cd):
         """
         Get filename from content-disposition
+        :param cd: Content-Disposition HTTP header
+        :return: filename from Content-Disposition or None
         """
         if not cd:
             return None
@@ -113,7 +115,7 @@ class HBFUpdate:
         Download the latest release of a module or framework
         :param module_tarball_url: release URL
         :param package_name: The package name downloaded (module or framework)
-        :return:
+        :return: filename or None
         """
         self.logger.handle("Downloading {}...".format(package_name))
         resp = requests.get(module_tarball_url, stream=True)
@@ -178,6 +180,7 @@ class HBFUpdate:
         This script check all released Hydrabus Framework modules and compare it with currently installed modules.
         If an update is available, this script install it. Moreover, if a module is available and not installed, it will
         be installed
+        :param update_framework: if True check if a framework update is available
         :return: Nothing
         """
         if update_framework:

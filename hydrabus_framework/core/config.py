@@ -8,6 +8,7 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 def create_default_config(config, hbf_dir, hbf_config_path):
     """
+    Create the default config file if it does not exist
     :param config: configparser instance
     :param hbf_dir: pathlib object of the home directory of the current user
     :param hbf_config_path: pathlib object of the configuration path located in the home's current user
@@ -34,6 +35,7 @@ def create_default_config(config, hbf_dir, hbf_config_path):
     }
     config['THEME'] = {
         # Prompt.
+        'user_input': '',
         'base': '#3399ff',
         'pound': '#3399ff',
         'module': '#ff0000 bold',
@@ -44,6 +46,10 @@ def create_default_config(config, hbf_dir, hbf_config_path):
 
 
 def load_config():
+    """
+    Load the existing configuration file and return it
+    :return: configparser file content
+    """
     config = configparser.ConfigParser(allow_no_value=True)
     hbf_dir = Path.home() / '.hbf'
     hbf_config_path = hbf_dir / 'hbf.cfg'

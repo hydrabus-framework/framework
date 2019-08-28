@@ -31,6 +31,10 @@ class Progress:
         print('{}: {}'.format(self.header, self.full_msg), end='\r', flush=True)
 
     def stop(self):
+        """
+        Stop the dynamic printer process instance
+        :return: Nothing
+        """
         if self.full_msg == '':
             print(end='', flush=False)
         else:

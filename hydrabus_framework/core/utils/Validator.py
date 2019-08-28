@@ -8,6 +8,7 @@ class Validator:
     def _args_validator(self, options_dict):
         """
         Check arguments type validity & Convert to the specified format
+        :param options_dict: module options dictionary
         :return: Bool
         """
         for option in options_dict:
@@ -33,6 +34,7 @@ class Validator:
     def check_args(self, options_dict):
         """
         Check if all arguments are defined by user, or set default value if available
+        :param options_dict: module options dictionary
         :return: Bool
         """
         if len(options_dict) > 0:

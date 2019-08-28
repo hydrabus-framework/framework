@@ -19,6 +19,10 @@ class AModule(ABC):
         self.options = []
 
     def __name__(self):
+        """
+        Simply return the module name
+        :return: module name
+        """
         return self.name
 
     def get_option_value(self, option_name):
@@ -64,6 +68,10 @@ class AModule(ABC):
                                                                    "Value": "Value", "Required": "Required"})
 
     def print_meta(self):
+        """
+        Print meta of the module (author, module name, description)
+        :return: Nothing
+        """
         self.logger.handle('Author: {}'.format(self.meta['author']), Logger.HEADER)
         self.logger.handle('Module name: {}, version {}'.format(self.meta['name'], self.meta['version']), Logger.HEADER)
         self.logger.handle('Description: {}'.format(self.meta['description']), Logger.HEADER)

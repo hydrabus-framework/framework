@@ -6,11 +6,22 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 
 def _print_usage(hbf_instance):
+    """
+    Print show command usage
+    :param hbf_instance: Hydrabus framework instance (self)
+    :return: Nothing
+    """
     hbf_instance.logger.handle("Bad usage", Logger.ERROR)
     hbf_instance.logger.handle("Usage: show modules|options|config", Logger.INFO)
 
 
 def _check_args(hbf_instance, *args):
+    """
+    Check the length of show commands arguments and its validity
+    :param hbf_instance: Hydrabus framework instance (self)
+    :param args: vargs (show command argument)
+    :return:
+    """
     if len(args) < 2:
         _print_usage(hbf_instance)
         return False
@@ -27,7 +38,7 @@ def show(hbf_instance, *args):
     :param hbf_instance: Hydrabus framework instance (self)
     :return:
     """
-    # TODO: print by category separately
+    # TODO: print by protocol separately
     if _check_args(hbf_instance, *args):
         if args[1] == "modules":
             formatted_modules = []

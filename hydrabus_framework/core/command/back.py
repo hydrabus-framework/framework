@@ -3,8 +3,6 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 def back(hbf_instance):
     """
-    TODO: if back to nothing, replace set argument to None (completer)
-    TODO: if back to a previous module, update set argument
     Move back from the current context
     :param hbf_instance: Hydrabus framework instance (self)
     :return: Nothing

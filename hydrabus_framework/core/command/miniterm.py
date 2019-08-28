@@ -10,7 +10,11 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 
 def key_description(character):
-    """generate a readable description for a key"""
+    """
+    generate a readable description for a key
+    :param character: an ascii character
+    :return: readable description for key
+    """
     ascii_code = ord(character)
     if ascii_code < 32:
         return 'Ctrl+{:c}'.format(ord('@') + ascii_code)

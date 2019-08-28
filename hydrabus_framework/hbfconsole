@@ -7,6 +7,10 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 
 def welcome():
+    """
+    Print framework header
+    :return:
+    """
     print("""\033[92m
       _    ___     _______  _____            ____  _    _  _____           
      | |  | \ \   / /  __ \|  __ \     /\   |  _ \| |  | |/ ____|          

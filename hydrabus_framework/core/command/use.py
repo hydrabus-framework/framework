@@ -5,11 +5,22 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 
 def _print_usage(hbf_instance):
+    """
+    Print use command usage
+    :param hbf_instance: Hydrabus framework instance (self)
+    :return: Nothing
+    """
     hbf_instance.logger.handle("Bad usage", Logger.ERROR)
     hbf_instance.logger.handle("Usage: use <module_name>", Logger.INFO)
 
 
 def _check_args(hbf_instance, *args):
+    """
+    Check the length of use commands arguments and its validity
+    :param hbf_instance: Hydrabus framework instance (self)
+    :param args: vargs (show command argument)
+    :return:
+    """
     if len(args) < 2:
         _print_usage(hbf_instance)
         return False
