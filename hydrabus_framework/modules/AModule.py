@@ -7,7 +7,7 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 
 class AModule(ABC):
-    def __init__(self):
+    def __init__(self, hbf_config):
         self.name = None
         self.meta = {
             'name': '',
@@ -17,6 +17,7 @@ class AModule(ABC):
         }
         self.logger = Logger()
         self.options = []
+        self.config = hbf_config
 
     def __name__(self):
         """

@@ -42,7 +42,7 @@ def use(hbf_instance, *args):
             if module["path"] == args[1]:
                 if hbf_instance.current_module is not None:
                     hbf_instance.modules_history.append({"path": module["path"], "class": module["class"]()})
-                hbf_instance.current_module = module["class"]()
+                hbf_instance.current_module = module["class"](hbf_instance.config)
                 hbf_instance.current_module_name = module["path"]
                 hbf_instance.update_completer_options_list()
                 break
