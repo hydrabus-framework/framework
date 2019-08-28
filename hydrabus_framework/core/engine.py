@@ -159,11 +159,11 @@ class HydraFramework:
         # TODO: close everything before exit
         # TODO: Improve Ctrl+c handle
         session = PromptSession()
-        try:
-            while True:
+        while True:
+            try:
                 command = session.prompt(self.prompt, style=self.prompt_style, completer=self.console_completer,
                                          complete_while_typing=False)
                 self.dispatcher.handle(self, command)
                 self.update_prompt()
-        except KeyboardInterrupt:
-            exit(1)
+            except KeyboardInterrupt:
+                self.logger.handle("Please use 'exit' command to properly quit the framework", Logger.INFO)
