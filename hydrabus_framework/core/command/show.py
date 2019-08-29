@@ -47,7 +47,7 @@ def show(hbf_instance, *args):
             print("================")
             for module in hbf_instance.modules:
                 formatted_modules.append({"Path": module["path"],
-                                          "Description": module["class"]().meta["description"]})
+                                          "Description": module["class"](hbf_instance.config).meta["description"]})
             hbf_instance.logger.print_tabulate(formatted_modules,
                                                headers={"Path": "Path", "Description": "Description"})
         elif args[1] == "config":
