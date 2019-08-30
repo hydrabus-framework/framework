@@ -136,18 +136,19 @@ class HydraFramework:
         try:
             package = import_module(module_name)
         except ImportError:
-            self.logger.handle("Unable to find any modules, please run 'hbfupdate'"
+            self.logger.handle("Unable to find any modules, please run 'hbfupdate' "
                                "script to install available modules...", Logger.ERROR)
-        for loader, module, is_pkg in pkgutil.walk_packages(package.__path__, prefix=package.__name__ + '.'):
-            try:
-                imported_module = import_module(module)
-                for x in dir(imported_module):
-                    obj = getattr(imported_module, x)
-                    if inspect.isclass(obj) and issubclass(obj, AModule) and obj is not AModule:
-                        module_path = module.replace('hbfmodules.', '').replace('.', '/')
-                        modules.append({"path": module_path, "class": obj})
-            except ImportError:
-                self.logger.handle('Error dynamically import package "{}"...'.format(module), Logger.ERROR)
+        else:
+            for loader, module, is_pkg in pkgutil.walk_packages(package.__path__, prefix=package.__name__ + '.'):
+                try:
+                    imported_module = import_module(module)
+                    for x in dir(imported_module):
+                        obj = getattr(imported_module, x)
+                        if inspect.isclass(obj) and issubclass(obj, AModule) and obj is not AModule:
+                            module_path = module.replace('hbfmodules.', '').replace('.', '/')
+                            modules.append({"path": module_path, "class": obj})
+                except ImportError:
+                    self.logger.handle('Error dynamically import package "{}"...'.format(module), Logger.ERROR)
         self.logger.handle("{} modules loaded, run 'hbfupdate' to install the latest modules".format(len(modules)),
                            Logger.USER_INTERACT)
         return modules
