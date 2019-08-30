@@ -7,4 +7,7 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 
 if __name__ == '__main__':
+    print('----------------------------------------------------------------------')
+    print('----------------Retrieve and install available modules----------------')
+    print('----------------------------------------------------------------------')
     HBFUpdate().update(update_framework=True)

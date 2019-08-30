@@ -1,33 +1,12 @@
 #!/usr/bin/env python
 
-import atexit
-import importlib
-
 from setuptools import setup, find_packages
-from setuptools.command.install import install
 
 
 __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 description = 'Hydrabus Framework core'
 name = 'hydrabus_framework'
-
-
-def _post_install():
-    print('----------------------------------------------------------------------')
-    print('----------------Retrieve and install available modules----------------')
-    print('----------------------------------------------------------------------')
-    hbfupdate = getattr(importlib.import_module('hydrabus_framework.core.utils.HBFUpdate'), 'HBFUpdate')
-    hbfupdate().update()
-
-
-class PostInstall(install):
-    """
-    This post-install script downloads and installs all available modules that have a released package
-    """
-    def __init__(self, *args, **kwargs):
-        super(PostInstall, self).__init__(*args, **kwargs)
-        atexit.register(_post_install)
 
 
 setup(
