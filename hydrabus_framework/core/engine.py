@@ -31,6 +31,7 @@ class HydraFramework:
         self.config = load_config()
         self.completer_nested_dict = self._get_dict_completion()
         self.console_completer = NestedCompleter.from_nested_dict(self.completer_nested_dict)
+        self.global_options = {}
         self.prompt_style = Style.from_dict({
             # User input (default text), no value = system default.
             '': self.config['THEME']['user_input'],

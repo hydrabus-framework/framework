@@ -9,6 +9,7 @@ from hydrabus_framework.core.command.quit import hbf_exit
 from hydrabus_framework.core.command.run import run_module
 from hydrabus_framework.core.command.save_config import save_config
 from hydrabus_framework.core.command.set_config import set_config
+from hydrabus_framework.core.command.set_globals import set_globals
 from hydrabus_framework.core.command.set_options import set_options
 from hydrabus_framework.core.command.show import show
 from hydrabus_framework.core.command.use import use
@@ -30,6 +31,7 @@ class Dispatcher:
             {"name": "back", "descr": "Move back from the current context", "run": back, "arguments": {}},
             {"name": "set", "descr": "Set a context-specific variable to a value", "run": set_options,
              "arguments": {}},
+            {"name": "setg", "descr": "Set a global variable to a value", "run": set_globals, "arguments": {}},
             {"name": "setc", "descr": "Set a config key to a value", "run": set_config, "arguments": {}},
             {"name": "save", "descr": "Save the current config into hbf.cfg file", "run": save_config, "arguments": {}},
             {"name": "miniterm", "descr": "Open a miniterm serial console", "run": miniterm, "arguments": {}},

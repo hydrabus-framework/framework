@@ -45,6 +45,10 @@ def use(hbf_instance, *args):
                                                          "class": module["class"](hbf_instance.config)})
                 hbf_instance.current_module = module["class"](hbf_instance.config)
                 hbf_instance.current_module_name = module["path"]
+                for global_option_name, global_option_value in hbf_instance.global_options.items():
+                    for module_option in hbf_instance.current_module.options:
+                        if global_option_name.upper() == module_option["Name"].upper():
+                            module_option["Value"] = global_option_value
                 hbf_instance.update_completer_options_list()
                 break
         else:
