@@ -33,7 +33,7 @@ def _check_args(hbf_instance, *args):
 
 def show(hbf_instance, *args):
     """
-    Displays modules list, or module options. Depending on arguments
+    Displays modules list, module options or global config. Depending on arguments
     :param args: varargs command options
     :param hbf_instance: Hydrabus framework instance (self)
     :return:

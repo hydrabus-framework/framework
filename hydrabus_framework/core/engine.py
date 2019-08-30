@@ -163,4 +163,7 @@ class HydraFramework:
                 self.dispatcher.handle(self, command)
                 self.update_prompt()
             except KeyboardInterrupt:
-                self.logger.handle("Please use 'exit' command to properly quit the framework", Logger.INFO)
+                self.logger.handle("Please use 'exit' command or ctrl+D key to properly quit the framework",
+                                   Logger.INFO)
+            except EOFError:
+                exit(0)
