@@ -32,7 +32,7 @@ def _check_args(hbf_instance, *args):
 
 def use(hbf_instance, *args):
     """
-    Method used to select a specific module 
+    Method used to select a specific module
     :param args: varargs command options
     :param hbf_instance: Hydrabus framework instance (self)
     :return: Nothing
