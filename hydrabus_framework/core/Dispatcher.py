@@ -22,18 +22,18 @@ class Dispatcher:
         self.commands = [
             {"name": "?", "descr": "Alias for help menu", "run": hbf_help, "arguments": {}},
             {"name": "help", "descr": "Help menu", "run": hbf_help, "arguments": {}},
-            {"name": "show", "descr": "modules|options|config: Displays modules list,"
+            {"name": "show", "descr": "modules|options|config: Displays modules list, "
                                       "module options, or global configuration", "run": show,
-             "arguments": {"options", "modules", "config"}},
-            {"name": "exit", "descr": "Exit the console", "run": hbf_exit, "arguments": {}},
+                                      "arguments": {"options", "modules", "config"}},
             {"name": "use", "descr": "Load a module by name", "run": use, "arguments": {}},
             {"name": "run", "descr": "Run the selected module", "run": run_module, "arguments": {}},
             {"name": "back", "descr": "Move back from the current context", "run": back, "arguments": {}},
             {"name": "set", "descr": "Set a context-specific variable to a value", "run": set_options,
              "arguments": {}},
-            {"name": "miniterm", "descr": "Open a miniterm serial console", "run": miniterm, "arguments": {}},
             {"name": "setc", "descr": "Set a config key to a value", "run": set_config, "arguments": {}},
-            {"name": "save", "descr": "Save the current config into hbf.cfg file", "run": save_config, "arguments": {}}
+            {"name": "save", "descr": "Save the current config into hbf.cfg file", "run": save_config, "arguments": {}},
+            {"name": "miniterm", "descr": "Open a miniterm serial console", "run": miniterm, "arguments": {}},
+            {"name": "exit", "descr": "Exit the console", "run": hbf_exit, "arguments": {}}
         ]
 
     def handle(self, hbf_instance, command):
