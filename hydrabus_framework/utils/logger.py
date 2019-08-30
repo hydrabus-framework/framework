@@ -116,7 +116,7 @@ class Logger:
         :param text: String, message to be printed
         :return: Nothing
         """
-        print("{}[✔]{} {}".format(Colors.OKGREEN.value, text, Colors.ENDC.value))
+        print("{}[✔] {}{}".format(Colors.OKGREEN.value, text, Colors.ENDC.value))
 
     @staticmethod
     def _print_user_interact(text):
@@ -125,7 +125,7 @@ class Logger:
         :param text: String, message to be printed
         :return: Nothing
         """
-        print("{}[*]{} {}".format(Colors.OKBLUE.value, text, Colors.ENDC.value))
+        print("{}[*] {}{}".format(Colors.OKBLUE.value, text, Colors.ENDC.value))
 
     @staticmethod
     def _print_header(text):
