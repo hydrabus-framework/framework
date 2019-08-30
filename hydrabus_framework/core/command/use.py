@@ -40,7 +40,7 @@ def use(hbf_instance, *args):
     if _check_args(hbf_instance, *args):
         for module in hbf_instance.modules:
             if module["path"] == args[1]:
-                if hbf_instance.current_module is not None:
+                if hbf_instance.current_module is not None and hbf_instance.current_module_name != module["path"]:
                     hbf_instance.modules_history.append({"path": module["path"],
                                                          "class": module["class"](hbf_instance.config)})
                 hbf_instance.current_module = module["class"](hbf_instance.config)
