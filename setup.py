@@ -31,7 +31,4 @@ setup(
     ],
     keywords=['hydrabus', 'framework', 'hardware', 'security', 'core', 'engine'],
     scripts=['hydrabus_framework/hbfconsole', 'hydrabus_framework/hbfupdate'],
-    cmdclass={
-        'install': PostInstall,
-    },
 )
