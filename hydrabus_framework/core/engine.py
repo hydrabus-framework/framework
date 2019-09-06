@@ -120,10 +120,19 @@ class HydraFramework:
 
     def update_completer_options_list(self):
         options = {}
-        if self.current_module is not None:
+        if isinstance(self.current_module, AModule):
             for option in self.current_module.options:
                 options.update({option["Name"]: None})
         self.completer_nested_dict["set"] = options
+        self.completer_nested_dict["unset"] = options
+        self.console_completer = NestedCompleter.from_nested_dict(self.completer_nested_dict)
+
+    def update_completer_global_options_list(self):
+        options = {}
+        for keys, _ in self.global_options.items():
+            options.update({keys: None})
+        self.completer_nested_dict["setg"] = options
+        self.completer_nested_dict["unsetg"] = options
         self.console_completer = NestedCompleter.from_nested_dict(self.completer_nested_dict)
 
     def _list_modules(self):
