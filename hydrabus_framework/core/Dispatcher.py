@@ -6,6 +6,7 @@ from hydrabus_framework.core.command.back import back
 from hydrabus_framework.core.command.help import hbf_help
 from hydrabus_framework.core.command.miniterm import miniterm
 from hydrabus_framework.core.command.quit import hbf_exit
+from hydrabus_framework.core.command.reset_hb import reset_hb
 from hydrabus_framework.core.command.run import run_module
 from hydrabus_framework.core.command.save_config import save_config
 from hydrabus_framework.core.command.set_config import set_config
@@ -35,6 +36,7 @@ class Dispatcher:
             {"name": "setc", "descr": "Set a config key to a value", "run": set_config, "arguments": {}},
             {"name": "save", "descr": "Save the current config into hbf.cfg file", "run": save_config, "arguments": {}},
             {"name": "miniterm", "descr": "Open a miniterm serial console", "run": miniterm, "arguments": {}},
+            {"name": "reset", "descr": "Reset hydrabus in main mode", "run": reset_hb, "arguments": {}},
             {"name": "exit", "descr": "Exit the console", "run": hbf_exit, "arguments": {}}
         ]
 
