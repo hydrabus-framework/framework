@@ -101,7 +101,7 @@ def set_spi_speed(serial_instance, spi_speed, spi_device="SPI1"):
             logger.handle("Invalid spi speed", Logger.ERROR)
             return False
     elif spi_device.upper() == "SPI2":
-        for string_speed, bin_speed in valid_spi2_speed:
+        for string_speed, bin_speed in valid_spi2_speed.items():
             if string_speed == spi_speed.upper():
                 speed = base_cmd + bin_speed
                 serial_instance.write(bytes([speed]))
