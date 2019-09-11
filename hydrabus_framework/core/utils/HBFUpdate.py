@@ -170,7 +170,7 @@ class HBFUpdate:
                     return False
             else:
                 self.logger.handle("Failed to download the latest release for the module '{}'"
-                              .format(package_name), Logger.ERROR)
+                                   .format(package_name), Logger.ERROR)
                 return False
         else:
             return False
