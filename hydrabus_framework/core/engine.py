@@ -159,8 +159,8 @@ class HydraFramework:
                             modules.append({"path": module_path, "class": obj})
                 except ImportError:
                     self.logger.handle('Error dynamically import package "{}"...'.format(module), Logger.ERROR)
-        self.logger.handle("{} modules loaded, run 'hbfupdate' to install the latest modules".format(len(modules)),
-                           Logger.USER_INTERACT)
+        self.logger.handle("{} modules loaded, run 'hbfupdate' command to install the latest modules"
+                           .format(len(modules)), Logger.USER_INTERACT)
         return modules
 
     def run(self):
