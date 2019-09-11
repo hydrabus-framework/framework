@@ -52,6 +52,7 @@ class Logger:
     RESULT = 4
     USER_INTERACT = 5
     HEADER = 6
+    WARNING = 7
 
     def __init__(self):
         self.categories = [
@@ -61,7 +62,8 @@ class Logger:
             self._print_info,
             self._print_result,
             self._print_user_interact,
-            self._print_header
+            self._print_header,
+            self._print_warning
         ]
 
     def handle(self, text, level=DEFAULT):
@@ -135,6 +137,15 @@ class Logger:
         :return: Nothing
         """
         print("{}{}{}".format(Colors.BOLD.value, text, Colors.ENDC.value))
+
+    @staticmethod
+    def _print_warning(text):
+        """
+        Beautify warning message
+        :param text: String, message to be printed
+        :return: Nothing
+        """
+        print("{}[!] {}{}".format(Colors.WARNING.value, text, Colors.ENDC.value))
 
     @staticmethod
     def print_tabulate(data, headers):
