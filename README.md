@@ -17,6 +17,22 @@ python3 setup.py install
 
 This framework work like metasploit. Simply run hbfconsole, load any available modules and enjoy!
 
+## Use Docker image
+
+### Build the image
+
+```
+docker build -t hbf .
+```
+
+### Run the instance
+
+```
+docker run --rm -it -v /local/folder/:/remote/folder --device=/dev/ttyACM0:/dev/hydrabus hbf
+```
+
+Please run `hbfupdate` in order to install available modules before running `hbfconsole`
+
 ## Configuration explanation
 
 ```
