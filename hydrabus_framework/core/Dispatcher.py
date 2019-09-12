@@ -28,7 +28,7 @@ class Dispatcher:
             {"name": "help", "descr": "Help menu", "run": hbf_help, "arguments": {}},
             {"name": "show", "descr": "modules|options|config: Displays modules list, "
                                       "module options, or global configuration", "run": show,
-                                      "arguments": {"options", "modules", "config"}},
+                                      "arguments": {"options", "modules", "config", "global"}},
             {"name": "use", "descr": "Load a module by name", "run": use, "arguments": {}},
             {"name": "run", "descr": "Run the selected module", "run": run_module, "arguments": {}},
             {"name": "back", "descr": "Move back from the current context", "run": back, "arguments": {}},

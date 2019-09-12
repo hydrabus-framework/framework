@@ -41,16 +41,18 @@ def show(hbf_instance, *args):
     # TODO: print by protocol separately
     if _check_args(hbf_instance, *args):
         if args[1] == "modules":
-            formatted_modules = []
+            print("\n")
             print("================")
             print("| Modules list |")
             print("================")
+            formatted_modules = []
             for module in hbf_instance.modules:
                 formatted_modules.append({"Path": module["path"],
                                           "Description": module["class"](hbf_instance.config).meta["description"]})
             hbf_instance.logger.print_tabulate(formatted_modules,
                                                headers={"Path": "Path", "Description": "Description"})
         elif args[1] == "config":
+            print("\n")
             print("================")
             print("|    Config    |")
             print("================")
@@ -58,6 +60,13 @@ def show(hbf_instance, *args):
                 print("\n[{}]".format(section))
                 for key in hbf_instance.config[section]:
                     print("{} = {}".format(key, hbf_instance.config[section][key]))
+        elif args[1] == "global":
+            print("\n")
+            print("==================")
+            print("| Global options |")
+            print("==================")
+            for key, value in hbf_instance.global_options.items():
+                print(f"{key} ==> {value}")
         else:
             if isinstance(hbf_instance.current_module, AModule):
                 hbf_instance.current_module.show_options()
