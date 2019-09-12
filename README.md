@@ -1,4 +1,4 @@
-# hydrabus-framework [v0.1.0]
+# hydrabus-framework [v0.0.1]
 
 ## Description
 
@@ -53,3 +53,45 @@ Follow the guideline on the [CONTRIBUTING.md](CONTRIBUTING.md) files
 ## Thanks
 
 I would like to thanks [@Nitr4x](https://github.com/Nitr4x) for his code review and ideas helping me to improve this framework.
+
+## FAQ
+
+* How to list available modules ?
+
+``` [hbf] > show modules ```
+
+* What's a global options ?
+
+A global options is an options who will be used for every module loaded.
+Setting the options with the `setg` command will set the specified options globally for every module loaded.
+Unset a specific global option wiht `unsetg` command.
+It is also possible to print previously defined global using `show global` command.
+
+* Can you give me a typical example of use?
+
+You identify a SPI flash chip on a hardware device. You want to dump his memory.
+Simply run `hbfconsole` from a shell and follow this instruction :
+
+1. List available module:
+
+```[hbf] > show modules```
+
+2. Select the correct module:
+
+```[hbf] > use spi/dump_eeprom```
+
+3. Show available options
+
+```[hbf] spi(dump_eeprom) > show options```
+
+4. Set necessary options
+
+```[hbf] spi(dump_eeprom) > set dump_file dump.bin```
+
+5. Run the module
+
+```[hbf] spi(dump_eeprom) > run```
+
+* How to properly remove the framework along with installed modules ?
+
+Coming soon
