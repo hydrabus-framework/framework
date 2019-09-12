@@ -26,8 +26,8 @@ class Dispatcher:
         self.commands = [
             {"name": "?", "descr": "Alias for help menu", "run": hbf_help, "arguments": {}},
             {"name": "help", "descr": "Help menu", "run": hbf_help, "arguments": {}},
-            {"name": "show", "descr": "modules|options|config: Displays modules list, "
-                                      "module options, or global configuration", "run": show,
+            {"name": "show", "descr": "modules|options|config|global: Displays modules list, "
+                                      "module options, global configuration or global options", "run": show,
                                       "arguments": {"options", "modules", "config", "global"}},
             {"name": "use", "descr": "Load a module by name", "run": use, "arguments": {}},
             {"name": "run", "descr": "Run the selected module", "run": run_module, "arguments": {}},
