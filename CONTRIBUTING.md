@@ -30,9 +30,44 @@ Create an issue on [hbfmodules.skeleton](https://github.com/hydrabus-framework/h
 * A short description
 * Module category (uart, jtag, spi, ...)
 
-If I accept the module, I will create an empty repository.
-Initiate it using [hbfmodules.skeleton](https://github.com/hydrabus-framework/hbfmodules.skeleton) module.
-Use as much as possible the `pyHydrabus` library for protocol interaction.
+If I accept the module, I will a repository initiated with [hbfmodules.skeleton](https://github.com/hydrabus-framework/hbfmodules.skeleton) repository.
+
+### Useful information
+
+**Use as much as possible the `pyHydrabus` library for protocol interaction.**
+
+#### Initial steps
+
+1. Fill the README.md file
+2. Rename the `category` directory (uart, spi, i2c, ...)
+3. Rename the `module_name.py` file
+4. Modifying the setup.py file
+
+#### Start coding (<module_name>.py)
+
+1. Update meta variable (into \_\_init\_\_ method)
+
+```
+self.meta.update({
+    'name': 'Module short description',
+    'version': '0.0.1',
+    'description': 'Module long description',
+    'author': 'Our name and/or email'
+})
+```
+
+2. Define necessary options (A list of dict) ->
+```
+self.options = [
+    {"Name": "Option1", "Value": "", "Required": True, "Type": "string/int/bool",
+     "Description": "Option1 description", "Default": "default value if available"},
+    {"Name": "Option2", "Value": "", "Required": False, "Type": "string/int/bool",
+     "Description": "Option2 description", "Default": self.config["HYDRABUS"]["read_timeout"]},
+]
+```
+
+3. Fulfill the `run` method
+
 
 ## Pull Requests
 
