@@ -5,6 +5,8 @@
 This project is a framework around the [hydrabus project](https://hydrabus.com/).
 It provides multiple modules allowing you to work efficiently and save time on any hardware project.
 
+[![asciicast](https://asciinema.org/a/z9iBJsZMsDmSB94TiYWRrctKi.svg)](https://asciinema.org/a/z9iBJsZMsDmSB94TiYWRrctKi)
+
 ## Installation
 
 Clone this repository or get the latest release, then :
