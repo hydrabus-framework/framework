@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/hydrabus-framework/framework.svg?branch=master)](https://travis-ci.org/hydrabus-framework/framework) [![Python 3.6|3.7|3.7-dev](https://img.shields.io/badge/python-3.6|3.7-blue.svg)](https://www.python.org/) [![License](https://img.shields.io/badge/license-GPLv3-important.svg)](https://github.com/hydrabus-framework/framework/master/LICENSE.md)
+
 # hydrabus-framework [v0.0.1]
 
 ## Description
