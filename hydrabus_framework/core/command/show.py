@@ -12,7 +12,7 @@ def _print_usage(hbf_instance):
     :return: Nothing
     """
     hbf_instance.logger.handle("Bad usage", Logger.ERROR)
-    hbf_instance.logger.handle("Usage: show modules|options|config", Logger.INFO)
+    hbf_instance.logger.handle("Usage: show modules|options|config|global", Logger.INFO)
 
 
 def _check_args(hbf_instance, *args):
@@ -25,7 +25,7 @@ def _check_args(hbf_instance, *args):
     if len(args) < 2:
         _print_usage(hbf_instance)
         return False
-    if args[1] not in ["modules", "options", "config"]:
+    if args[1] not in ["modules", "options", "config", "global"]:
         _print_usage(hbf_instance)
         return False
     return True
