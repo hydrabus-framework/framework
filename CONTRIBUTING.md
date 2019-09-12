@@ -32,6 +32,7 @@ Create an issue on [hbfmodules.skeleton](https://github.com/hydrabus-framework/h
 
 If I accept the module, I will create an empty repository.
 Initiate it using [hbfmodules.skeleton](https://github.com/hydrabus-framework/hbfmodules.skeleton) module.
+Use as much as possible the `pyHydrabus` library for protocol interaction.
 
 ## Pull Requests
 
