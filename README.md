@@ -62,15 +62,15 @@ I would like to thanks [@Nitr4x](https://github.com/Nitr4x) for his code review 
 
 * What's a global options ?
 
-A global options is an options who will be used for every module loaded.
+A global option is an option who will be used for every module loaded.
 Setting the options with the `setg` command will set the specified options globally for every module loaded.
-Unset a specific global option wiht `unsetg` command.
-It is also possible to print previously defined global using `show global` command.
+Unset a specific global option with `unsetg` command.
+It is also possible to print the previously defined global using `show global` command.
 
 * Can you give me a typical example of use?
 
-You identify a SPI flash chip on a hardware device. You want to dump his memory.
-Simply run `hbfconsole` from a shell and follow this instruction :
+You identify an SPI flash chip on a hardware device. You want to dump his memory.
+Simply run `hbfconsole` from a shell and follow these instructions :
 
 1. List available module:
 
@@ -92,6 +92,6 @@ Simply run `hbfconsole` from a shell and follow this instruction :
 
 ```[hbf] spi(dump_eeprom) > run```
 
-* How to properly remove the framework along with installed modules ?
+* How to properly remove the framework along with installed modules?
 
 Coming soon
