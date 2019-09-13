@@ -171,16 +171,18 @@ class HydraFramework:
         """
         session = PromptSession()
         # This parts is used to automate test by passing file script
-        file_script = Path(file_script)
-        if file_script.is_file():
-            with file_script.open() as f:
-                commands = f.readlines()
-            for command in commands:
-                command = session.prompt(self.prompt, style=self.prompt_style, default=command.strip(), accept_default=True)
-                self.dispatcher.handle(self, command)
-                self.update_prompt()
-        else:
-            self.logger.handle("File does not exist or it is not a file", self.logger.ERROR)
+        if file_script is not None:
+            file_script = Path(file_script)
+            if file_script.is_file():
+                with file_script.open() as f:
+                    commands = f.readlines()
+                for command in commands:
+                    command = session.prompt(self.prompt, style=self.prompt_style, default=command.strip(),
+                                             accept_default=True)
+                    self.dispatcher.handle(self, command)
+                    self.update_prompt()
+            else:
+                self.logger.handle("File does not exist or it is not a file", self.logger.ERROR)
         # Normal mode waiting for user_input
         while True:
             try:
