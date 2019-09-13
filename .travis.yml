@@ -8,5 +8,5 @@ install:
   - python setup.py install
 # command to run tests
 script:
-  - sudo hbfupdate
+  - hbfupdate
   - hbfconsole -s tests/travis.txt
