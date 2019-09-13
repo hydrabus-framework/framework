@@ -26,6 +26,9 @@ def reset_hb(hbf_instance):
         except UserWarning as err:
             logger.handle("{}".format(err), Logger.ERROR)
             return
-        hb_reset(serial_instance)
-        hb_close(serial_instance)
-        logger.handle("Reset sequence successfully sent to Hydrabus...", Logger.SUCCESS)
+        if isinstance(serial_instance, serial.Serial):
+            hb_reset(serial_instance)
+            hb_close(serial_instance)
+            logger.handle("Reset sequence successfully sent to Hydrabus...", Logger.SUCCESS)
+        else:
+            logger.handle("Unable to reset Hydrabus due to connection error...", Logger.ERROR)

@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import argparse
+
 from hydrabus_framework.core.engine import HydraFramework
 
 
@@ -28,7 +30,10 @@ def welcome():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-s', '--file', help='A file containing framework commands\' (one per line)')
+    args = parser.parse_args()
     welcome()
     instance = HydraFramework()
-    instance.run()
+    instance.run(args.file)
 
