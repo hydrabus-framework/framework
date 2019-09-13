@@ -11,7 +11,7 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 
 if __name__ == '__main__':
-    if os.geteuid() != 0 or not hasattr(sys, 'real_prefix'):
+    if os.geteuid() != 0 and not hasattr(sys, 'real_prefix'):
         Logger().handle("Please run 'hbfupdate' as root or use a virtualenv. Exiting...", Logger.ERROR)
         exit(1)
     print('----------------------------------------------------------------------')
