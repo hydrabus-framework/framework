@@ -93,7 +93,7 @@ class HBFUpdate:
         if resp.status_code == 200:
             return resp.json()["tarball_url"]
         else:
-            self.logger.handle("Unable to retrieve latest release URL for module '{}'", Logger.ERROR)
+            self.logger.handle(f"Unable to retrieve latest release URL for module '{module_name}'", Logger.ERROR)
             return None
 
     @staticmethod
