@@ -47,34 +47,20 @@ def hb_wait_ubtn(serial_instance):
     """
     # timeout=1 minute
     timeout = time.time() + 60 * 1
-    while True:
-        if serial_instance.read(1) == 'B'.encode('utf-8'):
-            if serial_instance.read(3) == 'BIO'.encode('utf-8'):
-                # carriage return needed to reset interface
-                serial_instance.write(b'\x0D\x0A')
-                time.sleep(0.2)
-                serial_instance.read(serial_instance.in_waiting)
+    try:
+        while True:
+            if serial_instance.hydrabus.read(1) == 'B'.encode('utf-8'):
+                if serial_instance.hydrabus.read(3) == 'BIO'.encode('utf-8'):
+                    # carriage return needed to reset interface
+                    serial_instance.hydrabus.write(b'\x0D\x0A')
+                    time.sleep(0.2)
+                    serial_instance.read(serial_instance.hydrabus.in_waiting)
+                    break
+            if time.time() > timeout:
+                Logger().handle("Wait UBTN timeout reached", Logger.ERROR)
                 break
-        if time.time() > timeout:
-            Logger().handle("Wait UBTN timeout reached", Logger.ERROR)
-            break
-
-
-def hb_connect_bbio(device, baudrate, timeout):
-    """
-    Connect to the hydrabus device, and then, switch to bbio mode
-    :param device: String, hydrabus device path
-    :param baudrate: integer, baudrate speed to communicate with hydrabus
-    :param timeout: integer, read timeout value (sec)
-    :return: serial instance
-    """
-    serial_instance = hb_connect(device, baudrate, timeout)
-    if isinstance(serial_instance, serial.Serial):
-        if hb_switch_bbio(serial_instance):
-            return serial_instance
-        else:
-            Logger().handle('Unable to switch hydrabus into bbio mode', Logger.ERROR)
-            return None
+    except KeyboardInterrupt:
+        pass
 
 
 def hb_connect(device, baudrate, timeout):
