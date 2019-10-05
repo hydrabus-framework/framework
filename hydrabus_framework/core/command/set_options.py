@@ -7,10 +7,10 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 def set_options(hbf_instance, *args):
     """
-    Sets a context-specific variable to a value
-    :param args: varargs command options
-    :param hbf_instance: Hydrabus framework instance (self)
-    :return: Nothing
+    Sets a context-specific variable to a value.
+    :param args: varargs command options.
+    :param hbf_instance: Hydrabus framework instance (self).
+    :return: Nothing.
     """
     if len(args) < 3:
         hbf_instance.logger.handle("Bad usage", Logger.ERROR)

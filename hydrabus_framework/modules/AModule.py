@@ -28,9 +28,9 @@ class AModule(ABC):
 
     def get_option_value(self, option_name):
         """
-        Return the value of a specific option
-        :param option_name: The needed option name
-        :return: Value
+        Return the value of a specific option.
+        :param option_name: The needed option name.
+        :return: Value.
         """
         for option in self.options:
             if option["Name"] == option_name:
@@ -40,8 +40,8 @@ class AModule(ABC):
 
     def show_options(self):
         """
-        Print available options for the module to user console
-        :return: Nothing
+        Print available options for the module to user console.
+        :return: Nothing.
         """
         formatted_options = []
         if len(self.options) > 0:
@@ -70,8 +70,8 @@ class AModule(ABC):
 
     def print_meta(self):
         """
-        Print meta of the module (author, module name, description)
-        :return: Nothing
+        Print meta of the module (author, module name, description).
+        :return: Nothing.
         """
         self.logger.handle('Author: {}'.format(self.meta['author']), Logger.HEADER)
         self.logger.handle('Module name: {}, version {}'.format(self.meta['name'], self.meta['version']), Logger.HEADER)
@@ -79,5 +79,9 @@ class AModule(ABC):
 
     @abstractmethod
     def run(self):
+        """
+        Main function.
+        :return:
+        """
         pass
 

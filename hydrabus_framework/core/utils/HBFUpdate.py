@@ -29,7 +29,7 @@ class HBFUpdate:
     def _get_installed_modules(self):
         """
         Return a dict of currently installed module(s).
-        :return: A dict of currently installed module(s) {'module_name': 'version', ...}
+        :return: A dict of currently installed module(s) {'module_name': 'version', ...}.
         """
         module_name = "hbfmodules"
         installed_modules = {}
@@ -54,7 +54,7 @@ class HBFUpdate:
     def _get_available_modules(self):
         """
         Return a dict of module that have a release on the hydrabus-framework organization.
-        :return: A dict of available module {'module_name': 'version', ...}
+        :return: A dict of available module {'module_name': 'version', ...}.
         """
         invalids = ['hbfmodules.skeleton', 'framework']
         modules = {}
@@ -71,8 +71,8 @@ class HBFUpdate:
 
     def _get_latest_framework_version(self):
         """
-        Return the latest release version of the Hydrabus framework
-        :return: string
+        Return the latest release version of the Hydrabus framework.
+        :return: string.
         """
         module_release_url = self.github_base_url + '/repos/hydrabus-framework/framework/releases/latest'
         resp = requests.get(module_release_url)
@@ -84,9 +84,9 @@ class HBFUpdate:
 
     def _get_latest_release_url(self, module_name):
         """
-        Get the latest release URL of a module or framework
-        :param module_name: module name
-        :return: url or None if not found
+        Get the latest release URL of a module or framework.
+        :param module_name: module name.
+        :return: url or None if not found.
         """
         module_release_url = self.github_base_url + '/repos/hydrabus-framework/{}/releases/latest'.format(module_name)
         resp = requests.get(module_release_url)
@@ -99,8 +99,8 @@ class HBFUpdate:
     @staticmethod
     def _get_filename_from_cd(cd):
         """
-        Get filename from content-disposition
-        :param cd: Content-Disposition HTTP header
+        Get filename from content-disposition.
+        :param cd: Content-Disposition HTTP header.
         :return: filename from Content-Disposition or None
         """
         if not cd:
@@ -112,10 +112,10 @@ class HBFUpdate:
 
     def _download_release(self, module_tarball_url, package_name):
         """
-        Download the latest release of a module or framework
-        :param module_tarball_url: release URL
-        :param package_name: The package name downloaded (module or framework)
-        :return: filename or None
+        Download the latest release of a module or framework.
+        :param module_tarball_url: release URL.
+        :param package_name: The package name downloaded (module or framework).
+        :return: filename or None.
         """
         self.logger.handle("Downloading {}...".format(package_name))
         resp = requests.get(module_tarball_url, stream=True)
@@ -134,7 +134,7 @@ class HBFUpdate:
     @staticmethod
     def _extract_tarball(filename):
         """
-        Extract the specified tarball
+        Extract the specified tarball.
         :param filename: the tarball file path
         :return: Directory path of the extracted archive
         """
@@ -147,9 +147,9 @@ class HBFUpdate:
 
     def _manage_install(self, package_name):
         """
-        Manage the installation of the specified package (module or framework)
-        :param package_name: The package name to install (module or framework)
-        :return: Bool: True if successfully update, False otherwise
+        Manage the installation of the specified package (module or framework).
+        :param package_name: The package name to install (module or framework).
+        :return: Bool: True if successfully update, False otherwise.
         """
         release_tarball_url = self._get_latest_release_url(package_name)
         if release_tarball_url:
@@ -179,8 +179,8 @@ class HBFUpdate:
         """
         This script check all released Hydrabus Framework modules and compare it with currently installed modules.
         If an update is available, this script install it. Moreover, if a module is available and not installed, it will
-        be installed
-        :param update_framework: if True check if a framework update is available
+        be installed.
+        :param update_framework: if True check if a framework update is available.
         :return: Nothing
         """
         if update_framework:

@@ -3,9 +3,9 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 def hbf_help(hbf_instance):
     """
-    Print framework help on the console
-    :param hbf_instance: Hydrabus framework instance (self)
-    :return: Nothing
+    Print framework help on the console.
+    :param hbf_instance: Hydrabus framework instance (self).
+    :return: Nothing.
     """
     print("\nCore Commands")
     print("=============")

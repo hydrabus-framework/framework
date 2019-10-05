@@ -17,10 +17,10 @@ def _print_usage(hbf_instance):
 
 def _check_args(hbf_instance, *args):
     """
-    Check the length of show commands arguments and its validity
-    :param hbf_instance: Hydrabus framework instance (self)
-    :param args: vargs (show command argument)
-    :return:
+    Check the length of show commands arguments and its validity.
+    :param hbf_instance: Hydrabus framework instance (self).
+    :param args: vargs (show command argument).
+    :return: Bool.
     """
     if len(args) < 2:
         _print_usage(hbf_instance)
@@ -33,10 +33,10 @@ def _check_args(hbf_instance, *args):
 
 def show(hbf_instance, *args):
     """
-    Displays modules list, module options or global config. Depending on arguments
-    :param args: varargs command options
-    :param hbf_instance: Hydrabus framework instance (self)
-    :return:
+    Displays modules list, module options or global config. Depending on arguments.
+    :param args: varargs command options.
+    :param hbf_instance: Hydrabus framework instance (self).
+    :return: Nothing.
     """
     # TODO: print by protocol separately
     if _check_args(hbf_instance, *args):

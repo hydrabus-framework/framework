@@ -46,7 +46,7 @@ class Dispatcher:
 
     def handle(self, hbf_instance, command):
         """
-        User console command handler
+        User console command handler.
         :param hbf_instance: Hydrabus framework instance (self)
         :param command: User input
         """

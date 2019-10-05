@@ -8,8 +8,8 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 def hb_reset(serial_instance):
     """
-    Reset hydrabus to return in console mode
-    :param serial_instance: hydrabus serial instance
+    Reset hydrabus to return in console mode.
+    :param serial_instance: hydrabus serial instance.
     """
     serial_instance.write(b'\x00')
     serial_instance.write(b'\x0F')
@@ -20,17 +20,17 @@ def hb_reset(serial_instance):
 
 def hb_close(serial_instance):
     """
-    Close hydrabus serial instance
-    :param serial_instance: hydrabus serial instance
+    Close hydrabus serial instance.
+    :param serial_instance: hydrabus serial instance.
     """
     serial_instance.close()
 
 
 def hb_switch_bbio(serial_instance):
     """
-    Init the hydrabus to switch into BBIO mode
-    :param serial_instance: hydrabus serial instance
-    :return: Bool
+    Init the hydrabus to switch into BBIO mode.
+    :param serial_instance: hydrabus serial instance.
+    :return: Bool.
     """
     for i in range(20):
         serial_instance.write(b'\x00')
@@ -41,9 +41,9 @@ def hb_switch_bbio(serial_instance):
 
 def hb_wait_ubtn(serial_instance):
     """
-    Loop until user press hydrabus UBTN
-    :param serial_instance: hydrabus serial instance
-    :return: Nothing
+    Loop until user press hydrabus UBTN.
+    :param serial_instance: hydrabus serial instance.
+    :return: Nothing.
     """
     # timeout=1 minute
     timeout = time.time() + 60 * 1
@@ -65,11 +65,11 @@ def hb_wait_ubtn(serial_instance):
 
 def hb_connect(device, baudrate, timeout):
     """
-    Connect to the hydrabus device
-    :param device: String, hydrabus device path
-    :param baudrate: integer, baudrate speed to communicate with hydrabus
-    :param timeout: integer, read timeout value (sec)
-    :return: serial instance
+    Connect to the hydrabus device.
+    :param device: String, hydrabus device path.
+    :param baudrate: integer, baudrate speed to communicate with hydrabus.
+    :param timeout: integer, read timeout value (sec).
+    :return: serial instance.
     """
     try:
         serial_instance = serial.Serial(device, baudrate, timeout=timeout)

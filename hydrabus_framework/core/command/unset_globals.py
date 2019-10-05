@@ -6,10 +6,10 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 def unset_globals(hbf_instance, *args):
     """
-    Unset a global variable
-    :param args: varargs command options
-    :param hbf_instance: Hydrabus framework instance (self)
-    :return: Nothing
+    Unset a global variable.
+    :param args: varargs command options.
+    :param hbf_instance: Hydrabus framework instance (self).
+    :return: Nothing.
     """
     if len(args) < 2:
         hbf_instance.logger.handle("Bad usage", Logger.ERROR)

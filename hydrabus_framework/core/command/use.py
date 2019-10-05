@@ -6,9 +6,9 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 def _print_usage(hbf_instance):
     """
-    Print use command usage
-    :param hbf_instance: Hydrabus framework instance (self)
-    :return: Nothing
+    Print use command usage.
+    :param hbf_instance: Hydrabus framework instance (self).
+    :return: Nothing.
     """
     hbf_instance.logger.handle("Bad usage", Logger.ERROR)
     hbf_instance.logger.handle("Usage: use <module_name>", Logger.INFO)
@@ -16,10 +16,10 @@ def _print_usage(hbf_instance):
 
 def _check_args(hbf_instance, *args):
     """
-    Check the length of use commands arguments and its validity
-    :param hbf_instance: Hydrabus framework instance (self)
-    :param args: vargs (show command argument)
-    :return:
+    Check the length of use commands arguments and its validity.
+    :param hbf_instance: Hydrabus framework instance (self).
+    :param args: vargs (show command argument).
+    :return: Bool.
     """
     if len(args) < 2:
         _print_usage(hbf_instance)
@@ -32,10 +32,10 @@ def _check_args(hbf_instance, *args):
 
 def use(hbf_instance, *args):
     """
-    Method used to select a specific module
-    :param args: varargs command options
-    :param hbf_instance: Hydrabus framework instance (self)
-    :return: Nothing
+    Method used to select a specific module.
+    :param args: varargs command options.
+    :param hbf_instance: Hydrabus framework instance (self).
+    :return: Nothing.
     """
     if _check_args(hbf_instance, *args):
         for module in hbf_instance.modules:

@@ -11,9 +11,9 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 def key_description(character):
     """
-    generate a readable description for a key
-    :param character: an ascii character
-    :return: readable description for key
+    generate a readable description for a key.
+    :param character: an ascii character.
+    :return: readable description for key.
     """
     ascii_code = ord(character)
     if ascii_code < 32:
@@ -24,10 +24,10 @@ def key_description(character):
 
 def miniterm(hbf_instance=None, config=None):
     """
-    Run a serial console session (using miniterm from serial package)
-    :param config: configparser instance
-    :param hbf_instance: Hydrabus framework instance (self)
-    :return: Nothing
+    Run a serial console session (using miniterm from serial package).
+    :param config: configparser instance.
+    :param hbf_instance: Hydrabus framework instance (self).
+    :return: Nothing.
     """
     logger = Logger()
     filters = []

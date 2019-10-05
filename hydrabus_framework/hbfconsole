@@ -10,7 +10,7 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 def welcome():
     """
-    Print framework header
+    Print framework header.
     :return:
     """
     print("""\033[92m

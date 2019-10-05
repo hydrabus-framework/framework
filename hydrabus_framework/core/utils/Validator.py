@@ -3,14 +3,14 @@ from hydrabus_framework.utils.logger import Logger
 
 class Validator:
     """
-    Class allowing to check module options (if set and if format is ok)
+    Class allowing to check module options (if set and if format is ok).
     """
     def __init__(self):
         self.logger = Logger()
 
     def _args_validator(self, options_dict):
         """
-        Check arguments type validity & Convert to the specified format
+        Check arguments type validity & Convert to the specified format.
         :param options_dict: module options dictionary
         :return: Bool
         """
@@ -36,7 +36,7 @@ class Validator:
 
     def check_args(self, options_dict):
         """
-        Check if all arguments are defined by user, or set default value if available
+        Check if all arguments are defined by user, or set default value if available.
         :param options_dict: module options dictionary
         :return: Bool
         """

@@ -9,9 +9,9 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 def reset_hb(hbf_instance):
     """
-    Return hydrabus into console mode
-    :param hbf_instance: Hydrabus framework instance (self)
-    :return: Nothing
+    Return hydrabus into console mode.
+    :param hbf_instance: Hydrabus framework instance (self).
+    :return: Nothing.
     """
     logger = Logger()
     hydrabus_cfg = hbf_instance.config['HYDRABUS']

@@ -52,7 +52,7 @@ class HydraFramework:
 
     def update_prompt(self):
         """
-        Update the user prompt
+        Update the user prompt.
         """
         if self.current_module_name is not None:
             category = self.current_module_name.split("/")[0]
@@ -73,26 +73,26 @@ class HydraFramework:
 
     def _get_dict_completion(self):
         """
-        Get all command with associated arguments and return a dict for NestedCompleter
-        :return: nested dictionary
-                nested_dict = {
-                                'set': {
-                                    'hydrabus': None,
-                                    ...
-                                },
-                                'setc': {
-                                    {
-                                        'section1': {
-                                            {key1: None},
-                                            {key2: None}
-                                        }
-                                    }
-                                'exit': None
-                                'use': {
-                                    {'module1': None},
-                                    ...
-                                }
+        Get all command with associated arguments and return a dict for NestedCompleter.
+        nested_dict = {
+            'set': {
+                'hydrabus': None,
+                ...
+            },
+            'setc': {
+                {
+                    'section1': {
+                        {key1: None},
+                        {key2: None}
+                    }
                 }
+            'exit': None
+            'use': {
+                {'module1': None},
+                ...
+            }
+        }
+        :return: nested dictionary
         """
         nested_completion_dict = {}
         modules_dict = {}
@@ -120,6 +120,10 @@ class HydraFramework:
         return nested_completion_dict
 
     def update_completer_options_list(self):
+        """
+        Update prompt completer options list when loading a new module.
+        :return: Nothing
+        """
         options = {}
         if isinstance(self.current_module, AModule):
             for option in self.current_module.options:
@@ -129,6 +133,10 @@ class HydraFramework:
         self.console_completer = NestedCompleter.from_nested_dict(self.completer_nested_dict)
 
     def update_completer_global_options_list(self):
+        """
+        Update prompt completer global options list when loading a new module.
+        :return: Nothing
+        """
         options = {}
         for keys, _ in self.global_options.items():
             options.update({keys: None})
@@ -138,7 +146,7 @@ class HydraFramework:
 
     def _list_modules(self):
         """
-        Generate modules path and attributes list
+        Generate modules path and attributes list.
         :return: List of available modules
         """
         modules = []
@@ -166,7 +174,7 @@ class HydraFramework:
 
     def run(self, file_script=None):
         """
-        Main loop, waiting for user input
+        Main loop, waiting for user input.
         :return:
         """
         session = PromptSession()

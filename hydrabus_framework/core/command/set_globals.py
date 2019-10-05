@@ -7,10 +7,10 @@ __author__ = "Jordan Ovrè <ghecko78@gmail.com>"
 
 def set_globals(hbf_instance, *args):
     """
-    Set a global variable to a value
-    :param args: varargs command options
-    :param hbf_instance: Hydrabus framework instance (self)
-    :return: Nothing
+    Set a global variable to a value.
+    :param args: varargs command options.
+    :param hbf_instance: Hydrabus framework instance (self).
+    :return: Nothing.
     """
     if len(args) < 3:
         hbf_instance.logger.handle("Bad usage", Logger.ERROR)
