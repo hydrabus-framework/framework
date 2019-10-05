@@ -1,0 +1,19 @@
+?
+show modules
+use uart/baudrates
+show options
+set timeout 1
+set unknown False
+setg dumpfile dump.bin
+run
+back
+show config
+back
+show global
+back
+use spi/dump_eeprom
+show options
+unsetg dumpfile
+run
+reset
+exit

@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+
+import os
+import sys
+
+from hydrabus_framework.core.utils.HBFUpdate import HBFUpdate
+from hydrabus_framework.utils.logger import Logger
+
+
+__author__ = "Jordan Ovrè <ghecko78@gmail.com>"
+
+
+if __name__ == '__main__':
+    if os.geteuid() != 0 and not hasattr(sys, 'real_prefix'):
+        Logger().handle("Please run 'hbfupdate' as root or use a virtualenv. Exiting...", Logger.ERROR)
+        exit(1)
+    print('----------------------------------------------------------------------')
+    print('----------------Retrieve and install available modules----------------')
+    print('----------------------------------------------------------------------')
+    HBFUpdate().update(update_framework=True)
