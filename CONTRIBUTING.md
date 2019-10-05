@@ -30,7 +30,7 @@ Create an issue on [hbfmodules.skeleton](https://github.com/hydrabus-framework/h
 * A short description
 * Module category (uart, jtag, spi, ...)
 
-If I accept the module, I will a repository initiated with [hbfmodules.skeleton](https://github.com/hydrabus-framework/hbfmodules.skeleton) repository.
+If I accept the module, I will create a repository initiated with the [hbfmodules.skeleton](https://github.com/hydrabus-framework/hbfmodules.skeleton) repository.
 
 ### Useful information
 
@@ -92,4 +92,4 @@ self.options = [
 * Search for your bug in opened issues before opening a new issue.
 
 
-Thank you for taking a few moments to read this contributing guideline !
+Thank you for taking a few moments to read this contributing guideline!
