@@ -11,7 +11,7 @@ name = 'hydrabus_framework'
 
 setup(
     name=name,
-    version='0.0.1',
+    version='0.0.2',
     packages=find_packages(),
     license='GPLv3',
     description=description,
@@ -19,7 +19,7 @@ setup(
     url='https://github.com/hydrabus-framework/framework',
     install_requires=[
         'tabulate==0.8.3',
-        'prompt_toolkit==2.0.9',
+        'prompt_toolkit==3.0.2',
         'serial==0.0.97',
         'pyserial==3.4',
         'requests==2.22.0'
