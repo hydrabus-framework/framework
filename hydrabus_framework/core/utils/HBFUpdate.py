@@ -186,7 +186,7 @@ class HBFUpdate:
         if update_framework:
             latest_release_version = self._get_latest_framework_version()
             if latest_release_version:
-                if latest_release_version < pkg_resources.get_distribution('hydrabus_framework').version:
+                if latest_release_version > pkg_resources.get_distribution('hydrabus_framework').version:
                     self.logger.handle('A new framework release is available, running update...', Logger.INFO)
                     if not self._manage_install('framework'):
                         self.not_updated.append('framework')
