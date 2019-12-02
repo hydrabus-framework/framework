@@ -1,5 +1,5 @@
 tabulate==0.8.3
-prompt_toolkit==2.0.9
+prompt_toolkit==3.0.2
 serial==0.0.97
 pyserial==3.4
 requests==2.22.0

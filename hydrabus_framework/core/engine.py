@@ -4,12 +4,12 @@ import sys
 
 from importlib import import_module
 from pathlib import Path
+from prompt_toolkit.completion.nested import NestedCompleter
 from prompt_toolkit.shortcuts import PromptSession
 from prompt_toolkit.styles import Style
 
 from hydrabus_framework.core.config import load_config
 from hydrabus_framework.core.Dispatcher import Dispatcher
-from hydrabus_framework.core.utils.NestedCompleter import NestedCompleter
 from hydrabus_framework.modules.AModule import AModule
 from hydrabus_framework.utils.logger import Logger
 
