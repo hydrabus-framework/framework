@@ -8,5 +8,5 @@ install:
   - python setup.py install
 # command to run tests
 script:
-  - hbfupdate
-  - hbfconsole -s tests/travis.txt
+  - bash -c "hbfupdate" | cat
+  - bash -c "hbfconsole -s tests/travis.txt | cat"
