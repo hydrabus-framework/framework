@@ -2,6 +2,10 @@
 
 # hydrabus-framework [v0.0.1]
 
+This project is not maintained anymore. I am now maintaining an equivalent framework, but for an upcoming alternative hardware tool: [Octowire](https://bitbucket.org/octowire/octowire-framework/src/master/).
+The Octowire hardware tool is not yet available for retail, more details coming soon.
+The main reasons for this decision are a better communication protocol between the hardware and the host, more interfaces available and a more powerful tool. 
+
 ## Description
 
 This project is a framework around the [hydrabus project](https://hydrabus.com/).
