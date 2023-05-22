@@ -22,7 +22,7 @@ setup(
         'prompt_toolkit==3.0.2',
         'serial==0.0.97',
         'pyserial==3.4',
-        'requests==2.22.0'
+        'requests==2.31.0'
     ],
     classifiers=[
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
